@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>webgl for newbie</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: Helvetica, sans-serif;
+        background: #333;
+      }
+
+      #container {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-end;
+        margin: 4px 4px 4px 4px;
+      }
+
+      .demo {
+        flex: 0 1 auto;
+        text-align: center;
+        margin: 8px 8px 10px 8px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      button {
+        margin-bottom: 2px;
+      }
+
+      canvas {
+        align-self: center;
+        width: 160px;
+        height: 120px;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+    </style>
+    <script>
+      function render(name) {
+        console.log('render', name)
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="container">
+    </div>
+  </body>
+
+  <template>
+    <div class="demo">
+      <button type="button" onclick="render(this)">{{name}}</button>
+      <canvas id="{{name}}">
+        你的浏览器不支持 WebGL.
+      </canvas>
+    </div>
+  </template>
+
+</html>
