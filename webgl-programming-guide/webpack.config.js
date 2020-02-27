@@ -19,6 +19,15 @@ module.exports = {
     host: '0.0.0.0',
     hot: true
   },
+
+  module: {
+    rules: [
+      {
+        test: /\.(txt|vs|fs|vert|frag)$/i,
+        use: 'raw-loader',
+      },
+    ],
+  },
   
   plugins: [new HtmlPlugin({
     file:path.join(__dirname,'dist','index.html'),

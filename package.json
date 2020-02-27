@@ -23,6 +23,7 @@
   "homepage": "https://github.com/proudcat/webgl-lab#readme",
   "devDependencies": {
     "html-webpack-plugin": "^3.2.0",
+    "raw-loader": "^4.0.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.10.3"
@@ -30,7 +31,6 @@
   "dependencies": {
     "dat.gui": "^0.7.6",
     "mustache": "^4.0.0",
-    "resource-loader": "^4.0.0-rc3",
     "spectorjs": "^0.9.15"
   }
 }

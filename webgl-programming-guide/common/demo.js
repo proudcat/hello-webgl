@@ -1,38 +1,11 @@
-import { Loader } from 'resource-loader'
+// import {Spector,EmbeddedFrontend} from 'spectorjs'
 
 /**
- * 加载shader
- * @param {JsonObject} res 
- *  {name:'vert',url:'shaders/origin.vs'}
- * or Array of that
+ * 初始化shader
+ * @param {}} gl canvas.getContext('webgl')
+ * @param {*} vshader source text of vertex shader
+ * @param {*} fshader soruce text of fragment shader
  */
-export function load(res){
-  let promise = new Promise((resovle,reject)=>{
-    const loader = new Loader()
-
-    if(Array.isArray(res)){
-      res.forEach(item => loader.add(item))
-    }else{
-      loader.add(res)
-    }
-
-    loader.onError.add((err) => {
-      console.warn(err)
-      loader.reset()
-      reject(res.url)
-    })
-    loader.onLoad.add((res) => {
-      console.log(`load ${res.url}`)
-    }) 
-
-    loader.load((loader, res) => {
-      resovle(res)
-      // loader.reset()
-    })
-  })
-  return promise
-}
-
 export function initShader(gl,vshader,fshader){
   let program = createProgram(gl, vshader, fshader)
   if (!program) {
@@ -46,6 +19,12 @@ export function initShader(gl,vshader,fshader){
   return true
 }
 
+/**
+ * 创建gl.program
+ * @param {*} gl 
+ * @param {*} vshader 
+ * @param {*} fshader 
+ */
 function createProgram(gl, vshader, fshader) {
 
   let vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader)
@@ -76,6 +55,12 @@ function createProgram(gl, vshader, fshader) {
   return program
 }
 
+/**
+ * 加载shader
+ * @param {*} gl 
+ * @param {*} type 
+ * @param {*} source 
+ */
 function loadShader(gl, type, source) {
 
   let shader = gl.createShader(type)
@@ -111,6 +96,17 @@ export class Demo{
     let $button = document.createElement('button')
     $button.textContent=name
     $button.onclick = ()=>{
+      console.log('xxxx')
+      // let spector = new Spector()
+
+      // spector.onCapture.add(result => {
+      //   let resultView = new EmbeddedFrontend.ResultView()
+      //   resultView.display()
+      //   resultView.addCapture(result)
+      // })
+      // window.requestAnimationFrame(()=>this.render())
+   
+      // spector.captureCanvas(this.$canvas)
       this.render()
     }
     

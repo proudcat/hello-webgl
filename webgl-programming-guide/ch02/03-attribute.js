@@ -1,28 +1,22 @@
-import { Demo,load,initShader } from '../common/demo'
+import { Demo,initShader } from '../common/demo'
+import vert from '../shaders/a_pos.vs'
+import frag from '../shaders/red.fs'
 
 export class Attribute extends Demo{
   constructor(name){
     super(name)
 
-    load([{name:'vert',url:'shaders/a_pos.vs'},{name:'frag',url:'shaders/red.fs'}])
-      .then(res =>{
-        
-        if(!initShader(this.ctx,res.vert.data,res.frag.data)){
-          console.log('failed to initialize shaders')
-          return
-        }
+    if(!initShader(this.ctx,vert,frag)){
+      console.log('failed to initialize shaders')
+      return
+    }
 
-        this.render()
-        
-      })
-      .catch(err=>{
-        console.log('load shader failed',err)
-      })
+    this.render()
   }
 
   render() {
     let gl = this.ctx
-    // Get the storage location of a_Position
+
     let a_Position = gl.getAttribLocation(gl.program, 'a_Position')
     if (a_Position < 0) {
       console.log('Failed to get the storage location of a_Position')
