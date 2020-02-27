@@ -1,24 +1,27 @@
 
 import * as dat from 'dat.gui'
 import * as ch02 from './ch02'
+import * as ch03 from './ch03'
 
 const gui = new dat.GUI()
 
 //所以章节
 let chapters = {
-  ch02
+  ch02, ch03
 }
 
 //当前章节
-let current
+let current = {
+  chapter:''
+}
 
 /**
  * 显示哪个章节
  * @param {String} index 
  */
-function show(index){
+function show(chapter='ch03'){
 
-  if(current == index){
+  if(current.chapter == chapter){
     return
   }else{
     let $root = document.querySelector('#container')
@@ -26,22 +29,22 @@ function show(index){
       $root.removeChild($root.lastChild)
     }
   }
-
-  for (let [name, Demo] of Object.entries(chapters[index])) {
+  
+  for (let [name, Demo] of Object.entries(chapters[chapter])) {
     new Demo(name)
   }
-  current = index
+  current.chapter = chapter
 }
 
 function setup(){
 
-  for (const key in chapters) {
-    gui.add({chapter: () => {
-      show(key)
-    }},'chapter').name(key)
+  gui.add(current, 'chapter').listen()
+
+  for (const chapter in chapters) {
+    gui.add({select: () => show(chapter)},'select').name(chapter)
   }
 
-  show('ch02')
+  show()
 }
 
 window.onload = setup
