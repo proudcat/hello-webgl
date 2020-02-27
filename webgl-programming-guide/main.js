@@ -1,41 +1,47 @@
 
+import * as dat from 'dat.gui'
 import * as ch02 from './ch02'
 
-// import {Spector,EmbeddedFrontend} from 'spectorjs'
+const gui = new dat.GUI()
 
-// class Render{
-//   constructor(){
+//所以章节
+let chapters = {
+  ch02
+}
 
-//     // this.spector = new Spector()
+//当前章节
+let current
 
-//     // this.spector.onCapture.add(result => {
-//     //   let resultView = new EmbeddedFrontend.ResultView()
-//     //   resultView.display()
-//     //   resultView.addCapture(result)
-//     // })
-//   }
+/**
+ * 显示哪个章节
+ * @param {String} index 
+ */
+function show(index){
 
-//   capture(){
-//     if (this.name){
-//       this.spector.captureCanvas(this.canvas)
-//     }
-//   }
+  if(current == index){
+    return
+  }else{
+    let $root = document.querySelector('#container')
+    while ($root.hasChildNodes()) {
+      $root.removeChild($root.lastChild)
+    }
+  }
 
-//   render(name){
-//     this.name = name
-//     // if(this.raf){
-//     //   window.cancelAnimationFrame(this.raf)
-//     // }
-//     let example = new examples[name](this.context,this.canvas)
-//     example.render()
-//     // this.raf = window.requestAnimationFrame(()=>this.render(name))
-//   }
-// }
-
-function setup(){
-  for (let [name, Demo] of Object.entries(ch02)) {
+  for (let [name, Demo] of Object.entries(chapters[index])) {
     new Demo(name)
   }
+  current = index
+}
+
+function setup(){
+
+  for (const key in chapters) {
+    gui.add({chapter: () => {
+      show(key)
+    }},'chapter').name(key)
+  }
+
+  show('ch02')
 }
 
 window.onload = setup
