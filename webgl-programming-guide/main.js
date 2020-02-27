@@ -1,5 +1,5 @@
 
-import * as examples from './js'
+import * as ch02 from './ch02'
 
 // import {Spector,EmbeddedFrontend} from 'spectorjs'
 
@@ -33,7 +33,7 @@ import * as examples from './js'
 // }
 
 function setup(){
-  for (let [name, Demo] of Object.entries(examples)) {
+  for (let [name, Demo] of Object.entries(ch02)) {
     new Demo(name)
   }
 }

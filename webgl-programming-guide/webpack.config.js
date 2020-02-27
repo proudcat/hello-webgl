@@ -3,10 +3,10 @@ const HtmlPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'none', 
-  entry: ['./newbie/index.js'],
+  entry: ['./webgl-programming-guide/main.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'newbie.min.js',
+    filename: 'webgl-programming-guide.min.js',
   },
   target: 'web',
 
@@ -22,7 +22,7 @@ module.exports = {
   
   plugins: [new HtmlPlugin({
     file:path.join(__dirname,'dist','index.html'),
-    template:'./newbie/index.html'
+    template:'./webgl-programming-guide/index.html'
   })
   ]
 }

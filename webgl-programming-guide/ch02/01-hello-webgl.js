@@ -1,4 +1,4 @@
-import { Demo } from './demo'
+import { Demo } from '../common/demo'
 
 export class HelloWebGL extends Demo{
 

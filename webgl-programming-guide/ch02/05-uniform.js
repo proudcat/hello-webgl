@@ -1,4 +1,4 @@
-import { Demo,load,initShader } from './demo'
+import { Demo,load,initShader } from '../common/demo'
 
 export class Uniform extends Demo{
 

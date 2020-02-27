@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "webgl excercise lab",
   "scripts": {
-    "newbie": "webpack-dev-server --config newbie/webpack.config.js",
+    "guide": "webpack-dev-server --config webgl-programming-guide/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
