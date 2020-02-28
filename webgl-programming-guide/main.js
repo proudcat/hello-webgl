@@ -1,12 +1,13 @@
 import * as dat from 'dat.gui'
 import * as ch02 from './ch02'
 import * as ch03 from './ch03'
+import * as ch04 from './ch04'
 
 const gui = new dat.GUI()
 
 //所有章节
 let chapters = {
-  ch02, ch03
+  ch02, ch03, ch04
 }
 
 //当前章节
@@ -18,7 +19,7 @@ let current = {
  * 显示哪个章节
  * @param {String} index 
  */
-function show(chapter='ch03'){
+function show(chapter='ch04'){
 
   if(current.chapter == chapter){
     return
@@ -37,6 +38,7 @@ function show(chapter='ch03'){
 
 function setup(){
 
+  gui.close()
   gui.add(current, 'chapter').listen()
 
   for (const chapter in chapters) {

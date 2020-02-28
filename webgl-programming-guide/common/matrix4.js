@@ -8,6 +8,7 @@ import {Vector3,Vector4} from './vector'
  * The matrix is replaced by the calculated result.
  */
 export default class Matrix4{
+  
 /**
  * Constructor of Matrix4
  * If options is specified, new matrix is initialized by options.
