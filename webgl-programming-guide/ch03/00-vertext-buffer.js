@@ -1,18 +1,13 @@
-import { Demo,initShader } from '../common/demo'
+import { Demo } from '../common/demo'
 import vert from '../shaders/a_pos.vs'
 import frag from '../shaders/red.fs'
 
 export class VertextBuffer extends Demo{
 
   constructor(name){
-    super(name)
+    super(name,{vert,frag})
 
     let gl = this.ctx
-
-    if(!initShader(gl,vert,frag)){
-      console.log('failed to initialize shaders')
-      return
-    }  
     
     let vertices = new Float32Array([
       0.0, 0.5, -0.5, -0.5, 0.5, -0.5

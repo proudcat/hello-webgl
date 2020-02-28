@@ -85,7 +85,7 @@ function loadShader(gl, type, source) {
 }
 
 export class Demo{
-  constructor(name,context='webgl'){
+  constructor(name,shaders,context='webgl'){
     this.name = name
 
     let $container = document.querySelector('#container')
@@ -96,7 +96,7 @@ export class Demo{
     let $button = document.createElement('button')
     $button.textContent=name
     $button.onclick = ()=>{
-      console.log('xxxx')
+      console.log('click',this.name)
       // let spector = new Spector()
 
       // spector.onCapture.add(result => {
@@ -130,6 +130,14 @@ export class Demo{
     if(context.includes('webgl')){
       this.ctx.viewport(0,0,this.ctx.drawingBufferWidth,this.ctx.drawingBufferHeight)
     }
+
+    if(shaders){
+      if(!initShader(this.ctx,shaders.vert,shaders.frag)){
+        console.error('failed to initialize shaders')
+        return
+      }
+    }
+
   }
 
   render(){

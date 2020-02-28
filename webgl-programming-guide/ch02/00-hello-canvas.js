@@ -3,7 +3,7 @@ import { Demo } from '../common/demo'
 export class HelloCanvas extends Demo{
 
   constructor(name){
-    super(name,'2d')
+    super(name,null,'2d')
     this.render()
   }
 
