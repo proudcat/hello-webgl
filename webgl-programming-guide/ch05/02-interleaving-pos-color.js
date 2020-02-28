@@ -1,8 +1,8 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_a_size.vs'
-import frag from '../shaders/red.fs'
+import vert from '../shaders/a_pos_size_v_color.vs'
+import frag from '../shaders/v_color.fs'
 
-export class MultiAttributeV2 extends Demo{
+export class InterleavingPosColor extends Demo{
 
   constructor(name){
     super(name,{vert,frag})
@@ -13,10 +13,10 @@ export class MultiAttributeV2 extends Demo{
     this.count = 3
 
     let vertices = new Float32Array([
-      //顶点坐标和点的尺寸
-      0.0,  0.5,  10.0, //第一个点
-      -0.5, -0.5, 20.0, //第二个点
-      0.5,  -0.5, 30.0, //第三个点
+      // Vertex coordinates and color
+      0.0,  0.5,  1.0,  0.0,  0.0, 
+      -0.5, -0.5, 0.0,  1.0,  0.0, 
+      0.5,  -0.5, 0.0,  0.0,  1.0, 
     ])
 
     const FSIZE = vertices.BYTES_PER_ELEMENT
@@ -26,12 +26,12 @@ export class MultiAttributeV2 extends Demo{
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
 
     let a_Position = gl.getAttribLocation(gl.program, 'a_Position')
-    gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, FSIZE * this.count, 0)
+    gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, FSIZE * 5, 0)
     gl.enableVertexAttribArray(a_Position)
 
-    let a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize')
-    gl.vertexAttribPointer(a_PointSize, 1, gl.FLOAT, false, FSIZE * this.count, FSIZE*2)
-    gl.enableVertexAttribArray(a_PointSize)
+    let a_Color = gl.getAttribLocation(gl.program, 'a_Color')
+    gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, FSIZE * 5, FSIZE*2)
+    gl.enableVertexAttribArray(a_Color)
   
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
@@ -42,6 +42,8 @@ export class MultiAttributeV2 extends Demo{
     
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.drawArrays(gl.POINTS, 0, this.count)
+    // gl.drawArrays(gl.TRIANGLES, 0, this.count)
+
   }
 
 }
