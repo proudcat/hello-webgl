@@ -1,18 +1,13 @@
-import { Demo,initShader } from '../common/demo'
+import Demo from '../common/demo'
 import vert from '../shaders/a_pos.vs'
 import frag from '../shaders/u_color.fs'
 
 export class Uniform extends Demo{
 
   constructor(name){
-    super(name)
+    super(name,{vert,frag})
     this.points = [] 
     this.colors = [] 
-
-    if(!initShader(this.ctx,vert,frag)){
-      console.log('failed to initialize shaders')
-      return
-    }        
 
     this.$canvas.onmousedown = ev => {
       this.click(ev)

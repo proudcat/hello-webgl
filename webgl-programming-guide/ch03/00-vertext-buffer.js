@@ -1,4 +1,4 @@
-import { Demo } from '../common/demo'
+import Demo from '../common/demo'
 import vert from '../shaders/a_pos.vs'
 import frag from '../shaders/red.fs'
 
