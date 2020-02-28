@@ -18,28 +18,6 @@ export class RotateTriangleMatrix4 extends Demo{
 
     let angle = 90
 
-    let radian = Math.PI * angle / 180.0
-    
-    let cosB = Math.cos(radian)
-    let sinB = Math.sin(radian)
-
-    /**
-     * Note: 
-     *  Cramer's rule is row major order (克莱姆法则是行主序)
-     *  | x' |   | cosB   -sinB   0   0 |   | x |
-     *  | y' | = | sinB   cosB    0   0 | x | y |
-     *  | z' |   |   0     0      1   0 |   | z |
-     *  | 1  |   |   0     0      0   1 |   | 1 |
-     */
-
-    //WebGL is column major order (webgl是列主序列)
-    // let transMatrix = new Float32Array([
-    //   cosB,  sinB, 0.0,  0.0,   //第一列
-    //   -sinB, cosB, 0.0,  0.0,   //第二列
-    //   0.0,   0.0,  1.0,  0.0,   //第三列
-    //   0.0,   0.0,  0.0,  1.0,   //第四列
-    // ])
-
     let transMatrix = new Matrix4()
     transMatrix.setRotate(angle, 0, 0, 1)
 
@@ -68,6 +46,7 @@ export class RotateTriangleMatrix4 extends Demo{
     this.render()
   }
   render() {
+
     let gl = this.ctx
     
     gl.clearColor(0.0, 0.0, 0.0, 1.0)

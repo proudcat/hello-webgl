@@ -40,13 +40,8 @@ export default class Demo{
     
     this.$canvas = $canvas
     this.ctx = this.$canvas.getContext(context)
-
-    $canvas.width =$canvas.clientWidth
-    $canvas.height =$canvas.clientHeight
-
-    if(context.includes('webgl')){
-      this.ctx.viewport(0,0,this.ctx.drawingBufferWidth,this.ctx.drawingBufferHeight)
-    }
+    
+    this.resize($canvas.clientWidth,$canvas.clientHeight)
 
     if(shaders){
       if(!initShader(this.ctx,shaders.vert,shaders.frag)){
@@ -54,7 +49,16 @@ export default class Demo{
         return
       }
     }
+  }
 
+  resize(width,height){
+    this.$canvas.style.width=`${width}px`
+    this.$canvas.style.height=`${height}px`
+    this.$canvas.width = width
+    this.$canvas.height = height
+    if(this.ctx instanceof WebGLRenderingContext){
+      this.ctx.viewport(0,0,width,height)
+    }  
   }
 
   render(){
