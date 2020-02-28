@@ -1,8 +1,8 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_size.vs'
+import vert from '../shaders/a_pos.vs'
 import frag from '../shaders/red.fs'
 
-export class VertextBuffer extends Demo{
+export class HelloTriangle extends Demo{
 
   constructor(name){
     super(name,{vert,frag})
@@ -42,8 +42,7 @@ export class VertextBuffer extends Demo{
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.clear(gl.COLOR_BUFFER_BIT)
 
-    gl.drawArrays(gl.POINTS, 0, this.count)
+    gl.drawArrays(gl.TRIANGLES, 0, this.count)
   }
 
 }
-    

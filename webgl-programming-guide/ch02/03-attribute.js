@@ -1,5 +1,5 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos.vs'
+import vert from '../shaders/a_pos_size.vs'
 import frag from '../shaders/red.fs'
 
 export class Attribute extends Demo{

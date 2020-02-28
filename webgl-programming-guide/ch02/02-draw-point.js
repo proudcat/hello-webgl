@@ -1,5 +1,5 @@
 import Demo from '../common/demo'
-import vert from '../shaders/origin.vs'
+import vert from '../shaders/pos_size.vs'
 import frag from '../shaders/red.fs'
 
 export class DrawPoint extends Demo{

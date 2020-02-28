@@ -5,7 +5,7 @@ import * as ch03 from './ch03'
 
 const gui = new dat.GUI()
 
-//所以章节
+//所有章节
 let chapters = {
   ch02, ch03
 }
