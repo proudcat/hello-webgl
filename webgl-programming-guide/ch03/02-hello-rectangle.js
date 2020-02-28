@@ -2,19 +2,17 @@ import Demo from '../common/demo'
 import vert from '../shaders/a_pos.vs'
 import frag from '../shaders/red.fs'
 
-export class HelloTriangle extends Demo{
+export class HelloRectangle extends Demo{
 
   constructor(name){
     super(name,{vert,frag})
 
     let gl = this.ctx
     
-    let vertices = new Float32Array([
-      0.0, 0.5, -0.5, -0.5, 0.5, -0.5
-    ])
-    
+    let vertices = new Float32Array([-0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 　0.5, -0.5])
+
     //定点个数
-    this.count = 3
+    this.count = 4
 
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()
@@ -34,7 +32,6 @@ export class HelloTriangle extends Demo{
     gl.enableVertexAttribArray(a_Position)
 
     this.render()
-
   }
   render() {
     let gl = this.ctx
@@ -42,7 +39,8 @@ export class HelloTriangle extends Demo{
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.clear(gl.COLOR_BUFFER_BIT)
 
-    gl.drawArrays(gl.TRIANGLES, 0, this.count)
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, this.count)
+    // gl.drawArrays(gl.TRIANGLE_FAN, 0, this.count)
     // gl.drawArrays(gl.LINES, 0, this.count)
     // gl.drawArrays(gl.LINE_STRIP, 0, this.count)
     // gl.drawArrays(gl.LINE_LOOP, 0, this.count)
