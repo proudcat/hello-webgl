@@ -1,5 +1,5 @@
 # WebGL 实验室
-> 此项目中得代码来源于各种书籍，网络，和自己的练习。能追溯到源头的都会标注。
+> WebGL练习项目，此项目中得代码来源于各种书籍，网络，和自己的练习。能追溯到源头的都会标注。
 
 ### 运行环境
 * 安装`nodejs`环境
@@ -12,3 +12,5 @@
 * 代码位于`webgl-programming-guide`目录。
 * `common/demo.js`是所有例子的父类，里面负责创建`canvas`等一些公共的初始化功能。
 * `common/webgl-util.js`是`shader`操作的帮助类，创建`program`，创建编译`shader`等。
+* `common/matrix4.js`封装的矩阵运算。
+* `vector.js`封装了向量运算。
