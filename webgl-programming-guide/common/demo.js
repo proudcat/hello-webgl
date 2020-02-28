@@ -7,8 +7,8 @@ export default class Demo{
 
     let $container = document.querySelector('#container')
 
-    let $div = document.createElement('div')
-    $div.className='demo'
+    this.$root = document.createElement('div')
+    this.$root.className='demo'
 
     let $button = document.createElement('button')
     $button.textContent=name
@@ -34,9 +34,9 @@ export default class Demo{
       console.log('WebGL Error:',event.statusMessage)
     }, false)
 
-    $div.appendChild($button)
-    $div.appendChild($canvas)
-    $container.appendChild($div)
+    this.$root.appendChild($button)
+    this.$root.appendChild($canvas)
+    $container.appendChild(this.$root)
     
     this.$canvas = $canvas
     this.ctx = this.$canvas.getContext(context)
@@ -63,6 +63,14 @@ export default class Demo{
 
   render(){
     throw '没有实现render方法'
+  }
+
+  destroy(){
+    if(this.ctx instanceof WebGLRenderingContext){
+      this.ctx.getExtension('WEBGL_lose_context').loseContext()
+    } 
+    let $container = document.querySelector('#container')
+    $container.removeChild(this.$root)
   }
 
 }

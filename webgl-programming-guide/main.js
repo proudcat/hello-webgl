@@ -10,10 +10,13 @@ let chapters = {
   ch02, ch03, ch04
 }
 
-//当前章节
-let current = {
+//上一个显示的章节
+let last = {
   chapter:''
 }
+
+//当前所有的demo
+let demoList = []
 
 /**
  * 显示哪个章节
@@ -21,25 +24,25 @@ let current = {
  */
 function show(chapter='ch04'){
 
-  if(current.chapter == chapter){
+  if(last.chapter == chapter){
     return
   }else{
-    let $root = document.querySelector('#container')
-    while ($root.hasChildNodes()) {
-      $root.removeChild($root.lastChild)
-    }
+    demoList.forEach(demo => demo.destroy())
+    demoList=[]
   }
   
   for (let [name, Demo] of Object.entries(chapters[chapter])) {
-    new Demo(name)
+    let demo = new Demo(name)
+    demoList.push(demo)
   }
-  current.chapter = chapter
+
+  last.chapter = chapter
 }
 
 function setup(){
 
   gui.close()
-  gui.add(current, 'chapter').listen()
+  gui.add(last, 'chapter').listen()
 
   for (const chapter in chapters) {
     gui.add({select: () => show(chapter)},'select').name(chapter)
