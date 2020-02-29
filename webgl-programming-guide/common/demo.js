@@ -51,6 +51,25 @@ export default class Demo{
     }
   }
 
+  loadImage(url){
+    let promise = new Promise((resovle,reject)=>{
+      let image = new Image()
+      image.onload=()=>{
+        resovle(image)
+      }
+      image.onerror=()=>{
+        reject()
+      }
+      image.src = url
+    })
+    return promise
+  }
+
+  /**
+   * 调整canvas大小
+   * @param {*} width 
+   * @param {*} height 
+   */
   resize(width,height){
     this.$canvas.style.width=`${width}px`
     this.$canvas.style.height=`${height}px`
@@ -61,10 +80,16 @@ export default class Demo{
     }  
   }
 
+  /**
+   * 调用WebGL渲染
+   */
   render(){
     throw '没有实现render方法'
   }
 
+  /**
+   * 销毁资源
+   */
   destroy(){
     if(this.ctx instanceof WebGLRenderingContext){
       this.ctx.getExtension('WEBGL_lose_context').loseContext()

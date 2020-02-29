@@ -31,7 +31,7 @@ export class InterleavingPosColor extends Demo{
 
     let a_Color = gl.getAttribLocation(gl.program, 'a_Color')
     gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, FSIZE * 5, FSIZE*2)
-    gl.enableVertexAttribArray(a_Color)
+    gl.enableVertexAttribArray (a_Color)
   
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
@@ -43,7 +43,6 @@ export class InterleavingPosColor extends Demo{
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.drawArrays(gl.POINTS, 0, this.count)
     // gl.drawArrays(gl.TRIANGLES, 0, this.count)
-
   }
 
 }
