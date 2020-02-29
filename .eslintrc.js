@@ -1,4 +1,4 @@
-{
+module.exports = {
   "env": {
     "browser": true,
     "es6": true,
@@ -7,17 +7,17 @@
   "extends": "eslint:recommended",
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 8
+    "ecmaVersion": 9
   },
   "rules": {
     "indent": [
       "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
+      2
     ],
-    "linebreak-style": 0,
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
     "quotes": [
       "error",
       "single"
@@ -43,4 +43,4 @@
     "no-case-declarations": "off"
   },
   "globals": {}
-}
+};
