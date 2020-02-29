@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "dat.gui": "^0.7.6",
-    "mustache": "^4.0.0",
     "spectorjs": "^0.9.15"
   }
 }
