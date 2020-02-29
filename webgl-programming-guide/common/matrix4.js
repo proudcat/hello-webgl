@@ -96,6 +96,10 @@ export default class Matrix4{
     return this
   }
 
+  multiply(other) { 
+    return this.concat(other)
+  }
+
   /**
    * Multiply the three-dimensional vector.
    * @param pos  The multiply vector

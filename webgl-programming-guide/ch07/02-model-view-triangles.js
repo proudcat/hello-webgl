@@ -1,9 +1,9 @@
 import Demo from '../common/demo'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/a_pos_av_color_u_view_u_model.vs'
+import vert from '../shaders/a_pos_av_color_u_modelview.vs'
 import frag from '../shaders/v_color.fs'
 
-export class LookAtRotatedTriangle extends Demo {
+export class ModelViewTriangle extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })
@@ -28,16 +28,11 @@ export class LookAtRotatedTriangle extends Demo {
     //顶点个数
     this.count = 9
 
-    let viewMatrix = new Matrix4()
-    viewMatrix.setLookAt(0.20, 0.25, 0.25, 0, 0, 0, 0, 1, 0)
+    let matrix = new Matrix4()
+    matrix.setLookAt(0.20, 0.25, 0.25, 0, 0, 0, 0, 1, 0).rotate(-30, 0, 0, 1)
 
-    let u_ViewMatrix = gl.getUniformLocation(gl.program, 'u_ViewMatrix')
-    gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix.elements)
-
-    let modelMatrix = new Matrix4()
-    modelMatrix.setRotate(-30,0,0,1)
-    let u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix')
-    gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements)
+    let u_ModelViewMatrix = gl.getUniformLocation(gl.program, 'u_ModelViewMatrix')
+    gl.uniformMatrix4fv(u_ModelViewMatrix, false, matrix.elements)
 
     let vertexBuffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
