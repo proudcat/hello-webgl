@@ -29,9 +29,10 @@ module.exports = {
     ],
   },
   
-  plugins: [new HtmlPlugin({
-    file:path.join(__dirname,'dist','index.html'),
-    template:'./webgl-programming-guide/index.html'
-  })
+  plugins: [
+    new HtmlPlugin({
+      file:path.join(__dirname,'dist','index.html'),
+      template:'./webgl-programming-guide/index.html'
+    })
   ]
 }
