@@ -3,7 +3,7 @@ import Matrix4 from '../common/matrix4.js'
 import frag from '../shaders/red.fs'
 import vert from '../shaders/a_pos_u_model.vs'
 
-export class ModelMatrix extends Demo{
+export class RotateMatrix extends Demo{
 
   constructor(name){
     super(name,{vert,frag})
@@ -23,10 +23,10 @@ export class ModelMatrix extends Demo{
     modelMatrix.setRotate(angle, 0, 0, 1)
     modelMatrix.translate(tx, 0, 0)
 
-    let u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix')
+    let u_RotateMatrix = gl.getUniformLocation(gl.program, 'u_RotateMatrix')
     
     //注意 WebGL没有实现矩阵转置，所以第二个参数必须是false。
-    gl.uniformMatrix4fv(u_ModelMatrix,false, modelMatrix.elements)
+    gl.uniformMatrix4fv(u_RotateMatrix,false, modelMatrix.elements)
     
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()

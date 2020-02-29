@@ -31,7 +31,7 @@ export class RotateTriangleAnimation extends Demo{
     gl.enableVertexAttribArray(a_Position)
     
     this.modelMatrix = new Matrix4()
-    this.u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix')
+    this.u_RotateMatrix = gl.getUniformLocation(gl.program, 'u_RotateMatrix')
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
@@ -61,7 +61,7 @@ export class RotateTriangleAnimation extends Demo{
     this.modelMatrix.setRotate(this.currentAngle, 0, 0, 1)
     this.modelMatrix.translate(0.35, 0, 0)
  
-    gl.uniformMatrix4fv(this.u_ModelMatrix, false, this.modelMatrix.elements)
+    gl.uniformMatrix4fv(this.u_RotateMatrix, false, this.modelMatrix.elements)
 
     gl.clear(gl.COLOR_BUFFER_BIT)
 
