@@ -86,7 +86,13 @@ export class OthoView extends Demo {
 
   render() {
     let gl = this.ctx
+
+    //可尝试修改视口大小改变看到的效果
     this.viewMatrix.setOrtho(-1, 1, -1, 1, this.near, this.far)
+    // this.viewMatrix.setOrtho(-0.5, 0.5, -0.5, 0.5, this.near, this.far)
+    // this.viewMatrix.setOrtho(-0.3, 0.3, -1, 1, this.near, this.far)
+
+    
     gl.uniformMatrix4fv(this.u_ProjMatrix, false, this.viewMatrix.elements)
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.drawArrays(gl.TRIANGLES, 0, this.count)
