@@ -1,9 +1,9 @@
 import Demo from '../common/demo'
 import frag from '../shaders/v_color.fs'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/a_pos_av_color_u_view.vs'
+import vert from '../shaders/a_pos_av_color_u_proj.vs'
 
-export class LookAtTriangleWithKeys extends Demo {
+export class OthoView extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })
@@ -12,29 +12,28 @@ export class LookAtTriangleWithKeys extends Demo {
 
     let vertices = new Float32Array([
       // Vertex coordinates and color(RGBA)
-      0.0, 0.5, -0.4, 0.4, 1.0, 0.4, // The back green one
-      -0.5, -0.5, -0.4, 0.4, 1.0, 0.4,
-      0.5, -0.5, -0.4, 1.0, 0.4, 0.4,
+      0.0, 0.8, -0.4, 1.0, 0.0, 0.0,
+      -0.8, -0.8, -0.4, 1.0, 0.0, 0.0,
+      0.8, -0.8, -0.4, 1.0, 0.0, 0.0,
 
-      0.5, 0.4, -0.2, 1.0, 0.4, 0.4, // The middle yellow one
-      -0.5, 0.4, -0.2, 1.0, 1.0, 0.4,
-      0.0, -0.6, -0.2, 1.0, 1.0, 0.4,
+      0.5, 0.5, -0.2, 0.0, 1.0, 0.0, 
+      -0.5, 0.5, -0.2, 0.0, 1.0, 0.0,
+      0.0, -0.6, -0.2, 0.0, 1.0, 0.0,
 
-      0.0, 0.5, 0.0, 0.4, 0.4, 1.0,  // The front blue one 
-      -0.5, -0.5, 0.0, 0.4, 0.4, 1.0,
-      0.5, -0.5, 0.0, 1.0, 0.4, 0.4,
+      0.0, 0.4, 0.0, 0.4, 0.4, 1.0,  
+      -0.4, -0.4, 0.0, 0.4, 0.4, 1.0,
+      0.4, -0.4, 0.0, 1.0, 0.4, 0.4,
     ])
 
     //顶点个数
     this.count = 9
 
-    this.eye_x = 0.20
-    this.eye_y = 0.25
-    this.eye_z = 0.25
+    this.near =0.0
+    this.far = 0.5
 
     this.viewMatrix = new Matrix4()
     
-    this.u_ViewMatrix = gl.getUniformLocation(gl.program, 'u_ViewMatrix')
+    this.u_ProjMatrix = gl.getUniformLocation(gl.program, 'u_ProjMatrix')
 
     let vertexBuffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
@@ -65,28 +64,30 @@ export class LookAtTriangleWithKeys extends Demo {
 
     switch (ev.keyCode) {
     case 37: //left arrow
-      this.eye_x -= 0.01
+      this.near -= 0.01
       break
-    case 39: //right arrow
-      this.eye_x += 0.01
+    case 39://right arrow 
+      this.near += 0.01
       break
-    case 38://up arrow 
-      this.eye_y += 0.01
+    case 38: //up arrow
+      this.far += 0.01
       break
     case 40: //down arrow
-      this.eye_y -= 0.01
+      this.far -= 0.01
       break
     default:
       return
     }
+
+    console.log(`near:${this.near},far:${this.far}`)
 
     this.render()
   }
 
   render() {
     let gl = this.ctx
-    this.viewMatrix.setLookAt(this.eye_x, this.eye_y, this.eye_y, 0, 0, 0, 0, 1, 0)
-    gl.uniformMatrix4fv(this.u_ViewMatrix, false, this.viewMatrix.elements)
+    this.viewMatrix.setOrtho(-1, 1, -1, 1, this.near, this.far)
+    gl.uniformMatrix4fv(this.u_ProjMatrix, false, this.viewMatrix.elements)
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.drawArrays(gl.TRIANGLES, 0, this.count)
   }

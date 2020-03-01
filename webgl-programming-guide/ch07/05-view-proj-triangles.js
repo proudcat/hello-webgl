@@ -1,9 +1,9 @@
 import Demo from '../common/demo'
 import frag from '../shaders/v_color.fs'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/a_pos_av_color_u_view.vs'
+import vert from '../shaders/a_pos_av_color_u_view_u_proj.vs'
 
-export class LookAtTriangleWithKeys extends Demo {
+export class ViewProjection extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })
@@ -33,8 +33,12 @@ export class LookAtTriangleWithKeys extends Demo {
     this.eye_z = 0.25
 
     this.viewMatrix = new Matrix4()
-    
     this.u_ViewMatrix = gl.getUniformLocation(gl.program, 'u_ViewMatrix')
+
+    let projMatrix = new Matrix4()
+    let u_ProjMatrix = gl.getUniformLocation(gl.program, 'u_ProjMatrix')
+    projMatrix.setOrtho(-1.0,1.0,-1.0,1.0,0.0,2.0)
+    gl.uniformMatrix4fv(u_ProjMatrix, false, projMatrix.elements)
 
     let vertexBuffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
@@ -52,14 +56,14 @@ export class LookAtTriangleWithKeys extends Demo {
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
-    document.addEventListener('keydown',ev => this.keydown(ev))
+    document.addEventListener('keydown', ev => this.keydown(ev))
 
     this.render()
   }
 
   keydown(ev) {
 
-    if (!this.enabled) { 
+    if (!this.enabled) {
       return
     }
 

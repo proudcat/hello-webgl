@@ -4,6 +4,7 @@ import {initShader} from './webgl-util'
 export default class Demo{
   constructor(name,shaders,context='webgl'){
     this.name = name
+    this.enabled = true
 
     let $container = document.querySelector('#container')
 
@@ -13,7 +14,9 @@ export default class Demo{
     let $button = document.createElement('button')
     $button.textContent=name
     $button.onclick = ()=>{
-      console.log('click',this.name)
+      this.enabled = !this.enabled
+      console.log(`enabled:${ this.enabled }`)
+      
       // let spector = new Spector()
 
       // spector.onCapture.add(result => {
