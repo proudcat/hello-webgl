@@ -6,8 +6,8 @@ export class Uniform extends Demo{
 
   constructor(name){
     super(name,{vert,frag})
-    this.points = [] 
-    this.colors = [] 
+    this.points = []
+    this.colors = []
 
     this.$canvas.onmousedown = ev => {
       this.click(ev)
@@ -37,7 +37,7 @@ export class Uniform extends Demo{
     let y = ev.clientY
     let rect = ev.target.getBoundingClientRect()
 
-    x = ((x - rect.left) - this.$canvas.width / 2) / (this.$canvas.width / 2)
+    x = (x - rect.left - this.$canvas.width / 2) / (this.$canvas.width / 2)
     y = (this.$canvas.height / 2 - (y - rect.top)) / (this.$canvas.height / 2)
 
     this.points.push([x, y])
@@ -51,4 +51,3 @@ export class Uniform extends Demo{
     }
   }
 }
-    

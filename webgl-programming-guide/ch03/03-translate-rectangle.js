@@ -8,7 +8,7 @@ export class TranslationRectangle extends Demo{
     super(name,{vert,frag})
 
     let gl = this.ctx
-    
+
     let vertices = new Float32Array([-0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5])
 
     //定点个数
@@ -18,7 +18,7 @@ export class TranslationRectangle extends Demo{
 
     let u_Translation = gl.getUniformLocation(gl.program, 'u_Translation')
     gl.uniform4f(u_Translation, tx, ty, tz, 0.0)
-    
+
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()
 
@@ -40,7 +40,7 @@ export class TranslationRectangle extends Demo{
   }
   render() {
     let gl = this.ctx
-    
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.clear(gl.COLOR_BUFFER_BIT)
 

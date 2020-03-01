@@ -9,7 +9,7 @@ export class RotateMatrix extends Demo{
     super(name,{vert,frag})
 
     let gl = this.ctx
-    
+
     let vertices = new Float32Array([
       0.0, 0.3, -0.3, -0.3, 0.3, -0.3
     ])
@@ -24,10 +24,10 @@ export class RotateMatrix extends Demo{
     modelMatrix.translate(tx, 0, 0)
 
     let u_RotateMatrix = gl.getUniformLocation(gl.program, 'u_RotateMatrix')
-    
+
     //注意 WebGL没有实现矩阵转置，所以第二个参数必须是false。
     gl.uniformMatrix4fv(u_RotateMatrix,false, modelMatrix.elements)
-    
+
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()
 
@@ -50,7 +50,7 @@ export class RotateMatrix extends Demo{
   render() {
 
     let gl = this.ctx
-    
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.clear(gl.COLOR_BUFFER_BIT)
 

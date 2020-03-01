@@ -12,14 +12,14 @@ export class ModelViewProjection extends Demo {
 
     this.initVertexBuffer()
 
-    this.modelMatrix = new Matrix4() 
+    this.modelMatrix = new Matrix4()
     this.u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix')
-    
-    let viewMatrix = new Matrix4() 
+
+    let viewMatrix = new Matrix4()
     viewMatrix.setLookAt(0, 0, 5, 0, 0, -100, 0, 1, 0)
     let u_ViewMatrix = gl.getUniformLocation(gl.program, 'u_ViewMatrix')
     gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix.elements)
-    
+
     let projMatrix = new Matrix4()
     let u_ProjMatrix = gl.getUniformLocation(gl.program, 'u_ProjMatrix')
     projMatrix.setPerspective(30, gl.drawingBufferWidth / gl.drawingBufferHeight, 1, 100)
@@ -29,7 +29,7 @@ export class ModelViewProjection extends Demo {
     this.render()
   }
 
-  initVertexBuffer() { 
+  initVertexBuffer() {
 
     let gl = this.ctx
 
@@ -43,9 +43,9 @@ export class ModelViewProjection extends Demo {
       -0.5, -1.0, -2.0, 1.0, 1.0, 0.4,
       0.5, -1.0, -2.0, 1.0, 0.4, 0.4,
 
-      0.0, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one 
+      0.0, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one
       -0.5, -1.0, 0.0, 0.4, 0.4, 1.0,
-      0.5, -1.0, 0.0, 1.0, 0.4, 0.4, 
+      0.5, -1.0, 0.0, 1.0, 0.4, 0.4
     ])
 
     //顶点个数

@@ -20,9 +20,9 @@ export class LookAtTriangleWithKeys extends Demo {
       -0.5, 0.4, -0.2, 1.0, 1.0, 0.4,
       0.0, -0.6, -0.2, 1.0, 1.0, 0.4,
 
-      0.0, 0.5, 0.0, 0.4, 0.4, 1.0,  // The front blue one 
+      0.0, 0.5, 0.0, 0.4, 0.4, 1.0,  // The front blue one
       -0.5, -0.5, 0.0, 0.4, 0.4, 1.0,
-      0.5, -0.5, 0.0, 1.0, 0.4, 0.4,
+      0.5, -0.5, 0.0, 1.0, 0.4, 0.4
     ])
 
     //顶点个数
@@ -33,7 +33,7 @@ export class LookAtTriangleWithKeys extends Demo {
     this.eye_z = 0.25
 
     this.viewMatrix = new Matrix4()
-    
+
     this.u_ViewMatrix = gl.getUniformLocation(gl.program, 'u_ViewMatrix')
 
     let vertexBuffer = gl.createBuffer()
@@ -59,7 +59,7 @@ export class LookAtTriangleWithKeys extends Demo {
 
   keydown(ev) {
 
-    if (!this.enabled) { 
+    if (!this.enabled) {
       return
     }
 
@@ -70,7 +70,7 @@ export class LookAtTriangleWithKeys extends Demo {
     case 39: //right arrow
       this.eye_x += 0.01
       break
-    case 38://up arrow 
+    case 38://up arrow
       this.eye_y += 0.01
       break
     case 40: //down arrow

@@ -14,9 +14,9 @@ export class PerspectiveView extends Demo {
 
     let u_ViewMatrix = gl.getUniformLocation(gl.program, 'u_ViewMatrix')
     let u_ProjMatrix = gl.getUniformLocation(gl.program, 'u_ProjMatrix')
-    
-    let viewMatrix = new Matrix4() 
-    let projMatrix = new Matrix4() 
+
+    let viewMatrix = new Matrix4()
+    let projMatrix = new Matrix4()
 
     viewMatrix.setLookAt(0, 0, 5, 0, 0, -100, 0, 1, 0)
     projMatrix.setPerspective(30, gl.drawingBufferWidth / gl.drawingBufferHeight, 1, 100)
@@ -27,7 +27,7 @@ export class PerspectiveView extends Demo {
     this.render()
   }
 
-  initVertexBuffer() { 
+  initVertexBuffer() {
 
     let gl = this.ctx
 
@@ -41,7 +41,7 @@ export class PerspectiveView extends Demo {
       0.25, -1.0, -2.0, 1.0, 1.0, 0.4,
       1.25, -1.0, -2.0, 1.0, 0.4, 0.4,
 
-      0.75, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one 
+      0.75, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one
       0.25, -1.0, 0.0, 0.4, 0.4, 1.0,
       1.25, -1.0, 0.0, 1.0, 0.4, 0.4,
 
@@ -54,9 +54,9 @@ export class PerspectiveView extends Demo {
       -1.25, -1.0, -2.0, 1.0, 1.0, 0.4,
       -0.25, -1.0, -2.0, 1.0, 0.4, 0.4,
 
-      -0.75, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one 
+      -0.75, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one
       -1.25, -1.0, 0.0, 0.4, 0.4, 1.0,
-      -0.25, -1.0, 0.0, 1.0, 0.4, 0.4,
+      -0.25, -1.0, 0.0, 1.0, 0.4, 0.4
     ])
 
     //顶点个数

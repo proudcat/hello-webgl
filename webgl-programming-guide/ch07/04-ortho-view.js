@@ -16,13 +16,13 @@ export class OthoView extends Demo {
       -0.8, -0.8, -0.4, 1.0, 0.0, 0.0,
       0.8, -0.8, -0.4, 1.0, 0.0, 0.0,
 
-      0.5, 0.5, -0.2, 0.0, 1.0, 0.0, 
+      0.5, 0.5, -0.2, 0.0, 1.0, 0.0,
       -0.5, 0.5, -0.2, 0.0, 1.0, 0.0,
       0.0, -0.6, -0.2, 0.0, 1.0, 0.0,
 
-      0.0, 0.4, 0.0, 0.4, 0.4, 1.0,  
+      0.0, 0.4, 0.0, 0.4, 0.4, 1.0,
       -0.4, -0.4, 0.0, 0.4, 0.4, 1.0,
-      0.4, -0.4, 0.0, 1.0, 0.4, 0.4,
+      0.4, -0.4, 0.0, 1.0, 0.4, 0.4
     ])
 
     //顶点个数
@@ -32,7 +32,7 @@ export class OthoView extends Demo {
     this.far = 0.5
 
     this.viewMatrix = new Matrix4()
-    
+
     this.u_ProjMatrix = gl.getUniformLocation(gl.program, 'u_ProjMatrix')
 
     let vertexBuffer = gl.createBuffer()
@@ -58,7 +58,7 @@ export class OthoView extends Demo {
 
   keydown(ev) {
 
-    if (!this.enabled) { 
+    if (!this.enabled) {
       return
     }
 
@@ -66,7 +66,7 @@ export class OthoView extends Demo {
     case 37: //left arrow
       this.near -= 0.01
       break
-    case 39://right arrow 
+    case 39://right arrow
       this.near += 0.01
       break
     case 38: //up arrow
@@ -92,7 +92,7 @@ export class OthoView extends Demo {
     // this.viewMatrix.setOrtho(-0.5, 0.5, -0.5, 0.5, this.near, this.far)
     // this.viewMatrix.setOrtho(-0.3, 0.3, -1, 1, this.near, this.far)
 
-    
+
     gl.uniformMatrix4fv(this.u_ProjMatrix, false, this.viewMatrix.elements)
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.drawArrays(gl.TRIANGLES, 0, this.count)

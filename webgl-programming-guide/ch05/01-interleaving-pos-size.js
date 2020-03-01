@@ -8,7 +8,7 @@ export class InterleavingPosSize extends Demo{
     super(name,{vert,frag})
 
     let gl = this.ctx
-     
+
     //顶点个数
     this.count = 3
 
@@ -16,11 +16,11 @@ export class InterleavingPosSize extends Demo{
       //顶点坐标和点的尺寸
       0.0,  0.5,  10.0, //第一个点
       -0.5, -0.5, 20.0, //第二个点
-      0.5,  -0.5, 30.0, //第三个点
+      0.5,  -0.5, 30.0 //第三个点
     ])
 
     const FSIZE = vertices.BYTES_PER_ELEMENT
-    
+
     let vertexBuffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
@@ -32,17 +32,16 @@ export class InterleavingPosSize extends Demo{
     let a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize')
     gl.vertexAttribPointer(a_PointSize, 1, gl.FLOAT, false, FSIZE * 3, FSIZE*2)
     gl.enableVertexAttribArray(a_PointSize)
-  
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
     this.render()
   }
   render() {
     let gl = this.ctx
-    
+
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.drawArrays(gl.POINTS, 0, this.count)
   }
 
 }
-    

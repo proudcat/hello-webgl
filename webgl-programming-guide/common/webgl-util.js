@@ -1,27 +1,38 @@
+
 /**
- * 初始化shader
- * @param {}} gl canvas.getContext('webgl')
- * @param {*} vshader source text of vertex shader
- * @param {*} fshader soruce text of fragment shader
+ * 加载shader
+ * @param {*} gl
+ * @param {*} type
+ * @param {*} source
  */
-export function initShader(gl,vshader,fshader){
-  let program = createProgram(gl, vshader, fshader)
-  if (!program) {
-    console.log('Failed to create program')
-    return false
+function loadShader ( gl, type, source ) {
+
+  let shader = gl.createShader( type )
+  if ( shader === null ) {
+    console.log( 'unable to create shader' )
+    return null
   }
 
-  gl.useProgram(program)
-  gl.program = program
+  gl.shaderSource( shader, source )
 
-  return true
+  gl.compileShader( shader )
+
+  let compiled = gl.getShaderParameter( shader, gl.COMPILE_STATUS )
+  if ( !compiled ) {
+    let error = gl.getShaderInfoLog( shader )
+    console.log( 'Failed to compile shader: ' + error )
+    gl.deleteShader( shader )
+    return null
+  }
+
+  return shader
 }
 
 /**
  * 创建gl.program
- * @param {*} gl 
- * @param {*} vshader 
- * @param {*} fshader 
+ * @param {*} gl
+ * @param {*} vshader
+ * @param {*} fshader
  */
 function createProgram(gl, vshader, fshader) {
 
@@ -53,31 +64,22 @@ function createProgram(gl, vshader, fshader) {
   return program
 }
 
+
 /**
- * 加载shader
- * @param {*} gl 
- * @param {*} type 
- * @param {*} source 
+ * 初始化shader
+ * @param {}} gl canvas.getContext('webgl')
+ * @param {*} vshader source text of vertex shader
+ * @param {*} fshader soruce text of fragment shader
  */
-function loadShader(gl, type, source) {
-
-  let shader = gl.createShader(type)
-  if (shader == null) {
-    console.log('unable to create shader')
-    return null
+export function initShader ( gl, vshader, fshader ) {
+  let program = createProgram( gl, vshader, fshader )
+  if ( !program ) {
+    console.log( 'Failed to create program' )
+    return false
   }
 
-  gl.shaderSource(shader, source)
+  gl.useProgram( program )
+  gl.program = program
 
-  gl.compileShader(shader)
-
-  let compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS)
-  if (!compiled) {
-    let error = gl.getShaderInfoLog(shader)
-    console.log('Failed to compile shader: ' + error)
-    gl.deleteShader(shader)
-    return null
-  }
-
-  return shader
+  return true
 }

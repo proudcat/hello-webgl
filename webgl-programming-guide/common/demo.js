@@ -16,7 +16,7 @@ export default class Demo{
     $button.onclick = ()=>{
       this.enabled = !this.enabled
       console.log(`enabled:${ this.enabled }`)
-      
+
       // let spector = new Spector()
 
       // spector.onCapture.add(result => {
@@ -25,11 +25,11 @@ export default class Demo{
       //   resultView.addCapture(result)
       // })
       // window.requestAnimationFrame(()=>this.render())
-   
+
       // spector.captureCanvas(this.$canvas)
       this.render()
     }
-    
+
     let $canvas = document.createElement('canvas')
     $canvas.id = name
     $canvas.textContent='你的浏览器不支持 WebGL.'
@@ -40,14 +40,14 @@ export default class Demo{
     this.$root.appendChild($button)
     this.$root.appendChild($canvas)
     $container.appendChild(this.$root)
-    
+
     this.$canvas = $canvas
     this.ctx = this.$canvas.getContext(context)
-    
+
     this.resize($canvas.clientWidth,$canvas.clientHeight)
 
-    if(shaders){
-      if(!initShader(this.ctx,shaders.vert,shaders.frag)){
+    if (shaders){
+      if (!initShader(this.ctx,shaders.vert,shaders.frag)){
         console.error('failed to initialize shaders')
         return
       }
@@ -70,17 +70,17 @@ export default class Demo{
 
   /**
    * 调整canvas大小
-   * @param {*} width 
-   * @param {*} height 
+   * @param {*} width
+   * @param {*} height
    */
   resize(width,height){
     this.$canvas.style.width=`${width}px`
     this.$canvas.style.height=`${height}px`
     this.$canvas.width = width
     this.$canvas.height = height
-    if(this.ctx instanceof WebGLRenderingContext){
+    if (this.ctx instanceof WebGLRenderingContext){
       this.ctx.viewport(0,0,width,height)
-    }  
+    }
   }
 
   /**
@@ -94,9 +94,9 @@ export default class Demo{
    * 销毁资源
    */
   destroy(){
-    if(this.ctx instanceof WebGLRenderingContext){
+    if (this.ctx instanceof WebGLRenderingContext){
       this.ctx.getExtension('WEBGL_lose_context').loseContext()
-    } 
+    }
     let $container = document.querySelector('#container')
     $container.removeChild(this.$root)
   }

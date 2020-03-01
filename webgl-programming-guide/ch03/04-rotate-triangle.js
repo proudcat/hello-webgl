@@ -8,7 +8,7 @@ export class RotateTriangle extends Demo{
     super(name,{vert,frag})
 
     let gl = this.ctx
-    
+
     let vertices = new Float32Array([
       0.0, 0.5, -0.5, -0.5, 0.5, -0.5
     ])
@@ -18,16 +18,16 @@ export class RotateTriangle extends Demo{
     let angle = 90
 
     let radian = Math.PI * angle / 180.0
-    
+
     let cosB = Math.cos(radian)
     let sinB = Math.sin(radian)
 
     let u_CosB = gl.getUniformLocation(gl.program, 'u_CosB')
     let u_SinB = gl.getUniformLocation(gl.program, 'u_SinB')
-    
+
     gl.uniform1f(u_CosB, cosB)
     gl.uniform1f(u_SinB, sinB)
-    
+
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()
 
@@ -49,7 +49,7 @@ export class RotateTriangle extends Demo{
   }
   render() {
     let gl = this.ctx
-    
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.clear(gl.COLOR_BUFFER_BIT)
 

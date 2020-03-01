@@ -8,7 +8,7 @@ export class HelloCanvas extends Demo{
   }
 
   render() {
-    this.ctx.fillStyle = 'rgba(0, 0, 255, 1.0)' 
+    this.ctx.fillStyle = 'rgba(0, 0, 255, 1.0)'
     this.ctx.fillRect(20, 10, 80, 80)
   }
 }

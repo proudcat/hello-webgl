@@ -1,14 +1,14 @@
 import {Vector3,Vector4} from './vector'
 
 
-/** 
+/**
  * This is a class treating 4x4 matrix.
  * This class contains the function that is equivalent to OpenGL matrix stack.
  * The matrix after conversion is calculated by multiplying a conversion matrix from the right.
  * The matrix is replaced by the calculated result.
  */
 export default class Matrix4{
-  
+
 /**
  * Constructor of Matrix4
  * If options is specified, new matrix is initialized by options.
@@ -56,7 +56,7 @@ export default class Matrix4{
     if (s === d) {
       return
     }
-    
+
     for (i = 0; i < 16; ++i) {
       d[i] = s[i]
     }
@@ -71,12 +71,12 @@ export default class Matrix4{
    */
   concat (other) {
     let i, e, a, b, ai0, ai1, ai2, ai3
-  
+
     // Calculate e = a * b
     e = this.elements
     a = this.elements
     b = other.elements
-  
+
     // If e equals b, copy b to temporary matrix.
     if (e === b) {
       b = new Float32Array(16)
@@ -84,7 +84,7 @@ export default class Matrix4{
         b[i] = e[i]
       }
     }
-  
+
     for (i = 0; i < 4; i++) {
       ai0=a[i];  ai1=a[i+4];  ai2=a[i+8];  ai3=a[i+12]
       e[i]    = ai0 * b[0]  + ai1 * b[1]  + ai2 * b[2]  + ai3 * b[3]
@@ -92,11 +92,11 @@ export default class Matrix4{
       e[i+8]  = ai0 * b[8]  + ai1 * b[9]  + ai2 * b[10] + ai3 * b[11]
       e[i+12] = ai0 * b[12] + ai1 * b[13] + ai2 * b[14] + ai3 * b[15]
     }
-  
+
     return this
   }
 
-  multiply(other) { 
+  multiply(other) {
     return this.concat(other)
   }
 
@@ -168,41 +168,41 @@ export default class Matrix4{
     d = this.elements
     inv = new Float32Array(16)
 
-    inv[0]  =   s[5]*s[10]*s[15] - s[5] *s[11]*s[14] - s[9] *s[6]*s[15]
-            + s[9]*s[7] *s[14] + s[13]*s[6] *s[11] - s[13]*s[7]*s[10]
-    inv[4]  = - s[4]*s[10]*s[15] + s[4] *s[11]*s[14] + s[8] *s[6]*s[15]
-            - s[8]*s[7] *s[14] - s[12]*s[6] *s[11] + s[12]*s[7]*s[10]
-    inv[8]  =   s[4]*s[9] *s[15] - s[4] *s[11]*s[13] - s[8] *s[5]*s[15]
-            + s[8]*s[7] *s[13] + s[12]*s[5] *s[11] - s[12]*s[7]*s[9]
-    inv[12] = - s[4]*s[9] *s[14] + s[4] *s[10]*s[13] + s[8] *s[5]*s[14]
-            - s[8]*s[6] *s[13] - s[12]*s[5] *s[10] + s[12]*s[6]*s[9]
+    inv[0]  =   s[5]*s[10]*s[15] - s[5] *s[11]*s[14] - s[9] *s[6]*s[15] +
+            s[9]*s[7] *s[14] + s[13]*s[6] *s[11] - s[13]*s[7]*s[10]
+    inv[4]  = - s[4]*s[10]*s[15] + s[4] *s[11]*s[14] + s[8] *s[6]*s[15] -
+            s[8]*s[7] *s[14] - s[12]*s[6] *s[11] + s[12]*s[7]*s[10]
+    inv[8]  =   s[4]*s[9] *s[15] - s[4] *s[11]*s[13] - s[8] *s[5]*s[15] +
+            s[8]*s[7] *s[13] + s[12]*s[5] *s[11] - s[12]*s[7]*s[9]
+    inv[12] = - s[4]*s[9] *s[14] + s[4] *s[10]*s[13] + s[8] *s[5]*s[14] -
+            s[8]*s[6] *s[13] - s[12]*s[5] *s[10] + s[12]*s[6]*s[9]
 
-    inv[1]  = - s[1]*s[10]*s[15] + s[1] *s[11]*s[14] + s[9] *s[2]*s[15]
-            - s[9]*s[3] *s[14] - s[13]*s[2] *s[11] + s[13]*s[3]*s[10]
-    inv[5]  =   s[0]*s[10]*s[15] - s[0] *s[11]*s[14] - s[8] *s[2]*s[15]
-            + s[8]*s[3] *s[14] + s[12]*s[2] *s[11] - s[12]*s[3]*s[10]
-    inv[9]  = - s[0]*s[9] *s[15] + s[0] *s[11]*s[13] + s[8] *s[1]*s[15]
-            - s[8]*s[3] *s[13] - s[12]*s[1] *s[11] + s[12]*s[3]*s[9]
-    inv[13] =   s[0]*s[9] *s[14] - s[0] *s[10]*s[13] - s[8] *s[1]*s[14]
-            + s[8]*s[2] *s[13] + s[12]*s[1] *s[10] - s[12]*s[2]*s[9]
+    inv[1]  = - s[1]*s[10]*s[15] + s[1] *s[11]*s[14] + s[9] *s[2]*s[15] -
+            s[9]*s[3] *s[14] - s[13]*s[2] *s[11] + s[13]*s[3]*s[10]
+    inv[5]  =   s[0]*s[10]*s[15] - s[0] *s[11]*s[14] - s[8] *s[2]*s[15] +
+            s[8]*s[3] *s[14] + s[12]*s[2] *s[11] - s[12]*s[3]*s[10]
+    inv[9]  = - s[0]*s[9] *s[15] + s[0] *s[11]*s[13] + s[8] *s[1]*s[15] -
+            s[8]*s[3] *s[13] - s[12]*s[1] *s[11] + s[12]*s[3]*s[9]
+    inv[13] =   s[0]*s[9] *s[14] - s[0] *s[10]*s[13] - s[8] *s[1]*s[14] +
+            s[8]*s[2] *s[13] + s[12]*s[1] *s[10] - s[12]*s[2]*s[9]
 
-    inv[2]  =   s[1]*s[6]*s[15] - s[1] *s[7]*s[14] - s[5] *s[2]*s[15]
-            + s[5]*s[3]*s[14] + s[13]*s[2]*s[7]  - s[13]*s[3]*s[6]
-    inv[6]  = - s[0]*s[6]*s[15] + s[0] *s[7]*s[14] + s[4] *s[2]*s[15]
-            - s[4]*s[3]*s[14] - s[12]*s[2]*s[7]  + s[12]*s[3]*s[6]
-    inv[10] =   s[0]*s[5]*s[15] - s[0] *s[7]*s[13] - s[4] *s[1]*s[15]
-            + s[4]*s[3]*s[13] + s[12]*s[1]*s[7]  - s[12]*s[3]*s[5]
-    inv[14] = - s[0]*s[5]*s[14] + s[0] *s[6]*s[13] + s[4] *s[1]*s[14]
-            - s[4]*s[2]*s[13] - s[12]*s[1]*s[6]  + s[12]*s[2]*s[5]
+    inv[2]  =   s[1]*s[6]*s[15] - s[1] *s[7]*s[14] - s[5] *s[2]*s[15] +
+            s[5]*s[3]*s[14] + s[13]*s[2]*s[7]  - s[13]*s[3]*s[6]
+    inv[6]  = - s[0]*s[6]*s[15] + s[0] *s[7]*s[14] + s[4] *s[2]*s[15] -
+            s[4]*s[3]*s[14] - s[12]*s[2]*s[7]  + s[12]*s[3]*s[6]
+    inv[10] =   s[0]*s[5]*s[15] - s[0] *s[7]*s[13] - s[4] *s[1]*s[15] +
+            s[4]*s[3]*s[13] + s[12]*s[1]*s[7]  - s[12]*s[3]*s[5]
+    inv[14] = - s[0]*s[5]*s[14] + s[0] *s[6]*s[13] + s[4] *s[1]*s[14] -
+            s[4]*s[2]*s[13] - s[12]*s[1]*s[6]  + s[12]*s[2]*s[5]
 
-    inv[3]  = - s[1]*s[6]*s[11] + s[1]*s[7]*s[10] + s[5]*s[2]*s[11]
-            - s[5]*s[3]*s[10] - s[9]*s[2]*s[7]  + s[9]*s[3]*s[6]
-    inv[7]  =   s[0]*s[6]*s[11] - s[0]*s[7]*s[10] - s[4]*s[2]*s[11]
-            + s[4]*s[3]*s[10] + s[8]*s[2]*s[7]  - s[8]*s[3]*s[6]
-    inv[11] = - s[0]*s[5]*s[11] + s[0]*s[7]*s[9]  + s[4]*s[1]*s[11]
-            - s[4]*s[3]*s[9]  - s[8]*s[1]*s[7]  + s[8]*s[3]*s[5]
-    inv[15] =   s[0]*s[5]*s[10] - s[0]*s[6]*s[9]  - s[4]*s[1]*s[10]
-            + s[4]*s[2]*s[9]  + s[8]*s[1]*s[6]  - s[8]*s[2]*s[5]
+    inv[3]  = - s[1]*s[6]*s[11] + s[1]*s[7]*s[10] + s[5]*s[2]*s[11] -
+            s[5]*s[3]*s[10] - s[9]*s[2]*s[7]  + s[9]*s[3]*s[6]
+    inv[7]  =   s[0]*s[6]*s[11] - s[0]*s[7]*s[10] - s[4]*s[2]*s[11] +
+            s[4]*s[3]*s[10] + s[8]*s[2]*s[7]  - s[8]*s[3]*s[6]
+    inv[11] = - s[0]*s[5]*s[11] + s[0]*s[7]*s[9]  + s[4]*s[1]*s[11] -
+            s[4]*s[3]*s[9]  - s[8]*s[1]*s[7]  + s[8]*s[3]*s[5]
+    inv[15] =   s[0]*s[5]*s[10] - s[0]*s[6]*s[9]  - s[4]*s[1]*s[10] +
+            s[4]*s[2]*s[9]  + s[8]*s[1]*s[6]  - s[8]*s[2]*s[5]
 
     det = s[0]*inv[0] + s[1]*inv[4] + s[2]*inv[8] + s[3]*inv[12]
     if (det === 0) {

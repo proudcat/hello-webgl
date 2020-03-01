@@ -22,16 +22,16 @@ let demoList = []
 
 /**
  * 显示哪个章节
- * @param {String} index 
+ * @param {String} index
  */
 function show(chapter = 'ch07') {
 
   if (current.chapter == chapter) {
     return
-  } else {
-    demoList.forEach(demo => demo.destroy())
-    demoList = []
   }
+  demoList.forEach(demo => demo.destroy())
+  demoList = []
+
 
   // if(!chapter){
   //   chapter = current.chapter

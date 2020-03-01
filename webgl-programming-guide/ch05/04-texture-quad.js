@@ -18,7 +18,7 @@ export class TextureQuad extends Demo{
       -0.5, 0.5, 0.0, 1.0,
       -0.5, -0.5, 0.0, 0.0,
       0.5, 0.5, 1.0, 1.0,
-      0.5, -0.5, 1.0, 0.0,
+      0.5, -0.5, 1.0, 0.0
     ])
 
     //定点个数
@@ -69,8 +69,8 @@ export class TextureQuad extends Demo{
   render() {
     let gl = this.ctx
 
-    gl.clear(gl.COLOR_BUFFER_BIT) 
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, this.count) 
+    gl.clear(gl.COLOR_BUFFER_BIT)
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, this.count)
   }
 
 }

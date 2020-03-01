@@ -8,11 +8,11 @@ export class HelloTriangle extends Demo{
     super(name,{vert,frag})
 
     let gl = this.ctx
-    
+
     let vertices = new Float32Array([
       0.0, 0.5, -0.5, -0.5, 0.5, -0.5
     ])
-    
+
     //定点个数
     this.count = 3
 
@@ -38,7 +38,7 @@ export class HelloTriangle extends Demo{
   }
   render() {
     let gl = this.ctx
-    
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.clear(gl.COLOR_BUFFER_BIT)
 

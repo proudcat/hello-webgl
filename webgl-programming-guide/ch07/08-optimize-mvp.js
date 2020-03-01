@@ -15,7 +15,7 @@ export class OptimizeMVP extends Demo {
     this.modelMatrix = new Matrix4() // Model matrix
     this.viewMatrix = new Matrix4()  // View matrix
     this.projMatrix = new Matrix4()  // Projection matrix
-    this.mvpMatrix = new Matrix4() 
+    this.mvpMatrix = new Matrix4()
 
     this.viewMatrix.setLookAt(0, 0, 5, 0, 0, -100, 0, 1, 0)
     this.projMatrix.setPerspective(30, gl.drawingBufferWidth / gl.drawingBufferHeight, 1, 100)
@@ -27,7 +27,7 @@ export class OptimizeMVP extends Demo {
     this.render()
   }
 
-  initVertexBuffer() { 
+  initVertexBuffer() {
 
     let gl = this.ctx
 
@@ -41,9 +41,9 @@ export class OptimizeMVP extends Demo {
       -0.5, -1.0, -2.0, 1.0, 1.0, 0.4,
       0.5, -1.0, -2.0, 1.0, 0.4, 0.4,
 
-      0.0, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one 
+      0.0, 1.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one
       -0.5, -1.0, 0.0, 0.4, 0.4, 1.0,
-      0.5, -1.0, 0.0, 1.0, 0.4, 0.4, 
+      0.5, -1.0, 0.0, 1.0, 0.4, 0.4
     ])
 
     //顶点个数

@@ -9,7 +9,7 @@ export class DrawPoint extends Demo{
   }
 
   render() {
-    
+
     let gl = this.ctx
 
     gl.clear(gl.COLOR_BUFFER_BIT)

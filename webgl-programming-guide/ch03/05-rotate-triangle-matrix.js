@@ -8,7 +8,7 @@ export class RotateTriangleMatrix extends Demo{
     super(name,{vert,frag})
 
     let gl = this.ctx
-    
+
     let vertices = new Float32Array([
       0.0, 0.5, -0.5, -0.5, 0.5, -0.5
     ])
@@ -18,12 +18,12 @@ export class RotateTriangleMatrix extends Demo{
     let angle = 90
 
     let radian = Math.PI * angle / 180.0
-    
+
     let cosB = Math.cos(radian)
     let sinB = Math.sin(radian)
 
     /**
-     * Note: 
+     * Note:
      *  Cramer's rule is row major order (克莱姆法则是行主序)
      *  | x' |   | cosB   -sinB   0   0 |   | x |
      *  | y' | = | sinB   cosB    0   0 | x | y |
@@ -36,14 +36,14 @@ export class RotateTriangleMatrix extends Demo{
       cosB,  sinB, 0.0,  0.0,   //第一列
       -sinB, cosB, 0.0,  0.0,   //第二列
       0.0,   0.0,  1.0,  0.0,   //第三列
-      0.0,   0.0,  0.0,  1.0,   //第四列
+      0.0,   0.0,  0.0,  1.0   //第四列
     ])
 
     let u_TransMatrix = gl.getUniformLocation(gl.program, 'u_TransMatrix')
-    
+
     //注意 WebGL没有实现矩阵转置，所以第二个参数必须是false。
     gl.uniformMatrix4fv(u_TransMatrix,false, transMatrix)
-    
+
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()
 
@@ -65,7 +65,7 @@ export class RotateTriangleMatrix extends Demo{
   }
   render() {
     let gl = this.ctx
-    
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.clear(gl.COLOR_BUFFER_BIT)
 
