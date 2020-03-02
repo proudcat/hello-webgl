@@ -1,10 +1,10 @@
 import Demo from '../common/demo'
 import frag from '../shaders/v_color.frag'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/directional-light-diffuse.vert'
+import vert from '../shaders/directional-light-diffuse-ambient.vert'
 import { Vector3 } from '../common/vector'
 
-export class DirectionalLightDiffuse extends Demo {
+export class DirectionalLightDiffuseAmbientAnimation extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })
@@ -16,22 +16,53 @@ export class DirectionalLightDiffuse extends Demo {
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
     gl.enable(gl.DEPTH_TEST)
 
-    let mvpMatrix = new Matrix4()
-    mvpMatrix.setPerspective(30, 1, 1, 100)
-    mvpMatrix.lookAt(3, 3, 7, 0, 0, 0, 0, 1, 0)
+    this.mvpMatrix = new Matrix4()
+    this.mvpMatrix.setPerspective(30, this.$canvas.width/this.$canvas.height, 1, 100)
+    this.mvpMatrix.lookAt(3, 3, 7, 0, 0, 0, 0, 1, 0)
 
-    let u_MvpMatrix = gl.getUniformLocation(gl.program, 'u_MvpMatrix')
-    gl.uniformMatrix4fv(u_MvpMatrix, false, mvpMatrix.elements)
+    this.u_MvpMatrix = gl.getUniformLocation(gl.program, 'u_MvpMatrix')
 
     let u_LightColor = gl.getUniformLocation(gl.program, 'u_LightColor')
     let u_LightDirection = gl.getUniformLocation(gl.program, 'u_LightDirection')
+
+    this.u_NormalMatrix = gl.getUniformLocation(gl.program, 'u_NormalMatrix')
 
     gl.uniform3f(u_LightColor, 1.0, 1.0, 1.0)
     let lightDirection = new Vector3([0.5, 3.0, 4.0])
     lightDirection.normalize()
     gl.uniform3fv(u_LightDirection, lightDirection.elements)
 
+    let u_AmbientLight = gl.getUniformLocation(gl.program, 'u_AmbientLight')
+    gl.uniform3f(u_AmbientLight, 0.2, 0.2, 0.2)
+
+    this.angle = 0.0
+    this.lastNow = Date.now()
+    this.modelMatrix = new Matrix4()
+
+    // this.normalMatrix = new Matrix4()
+
+    this.update()
+  }
+
+  update() {
+    let gl = this.ctx
+    let now = Date.now()
+    let elapsed = now - this.lastNow
+    this.lastNow = now
+    this.angle = (this.angle + 30.0 * elapsed) / 1000.0
+    this.angle %= 360
+
+    this.modelMatrix.setRotate(this.angle, 0, 1, 0)
+    this.mvpMatrix.multiply(this.modelMatrix)
+    gl.uniformMatrix4fv(this.u_MvpMatrix, false, this.mvpMatrix.elements)
+
+    // this.normalMatrix.setInverseOf(this.modelMatrix)
+    // this.normalMatrix.transpose()
+    // gl.uniformMatrix4fv(this.u_NormalMatrix,false,this.normalMatrix.elements)
+
     this.render()
+
+    requestAnimationFrame(() =>this.update())
   }
 
   initVertexBuffer() {

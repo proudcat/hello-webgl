@@ -1,10 +1,10 @@
 import Demo from '../common/demo'
 import frag from '../shaders/v_color.frag'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/directional-light-diffuse.vert'
+import vert from '../shaders/directional-light-diffuse-ambient.vert'
 import { Vector3 } from '../common/vector'
 
-export class DirectionalLightDiffuse extends Demo {
+export class DirectionalLightDiffuseAmbient extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })
@@ -25,11 +25,13 @@ export class DirectionalLightDiffuse extends Demo {
 
     let u_LightColor = gl.getUniformLocation(gl.program, 'u_LightColor')
     let u_LightDirection = gl.getUniformLocation(gl.program, 'u_LightDirection')
+    let u_AmbientLight = gl.getUniformLocation(gl.program, 'u_AmbientLight')
 
     gl.uniform3f(u_LightColor, 1.0, 1.0, 1.0)
     let lightDirection = new Vector3([0.5, 3.0, 4.0])
     lightDirection.normalize()
     gl.uniform3fv(u_LightDirection, lightDirection.elements)
+    gl.uniform3f(u_AmbientLight, 0.2, 0.2, 0.2)
 
     this.render()
   }
