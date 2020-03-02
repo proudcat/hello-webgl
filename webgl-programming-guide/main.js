@@ -4,12 +4,13 @@ import * as ch03 from './ch03'
 import * as ch04 from './ch04'
 import * as ch05 from './ch05'
 import * as ch07 from './ch07'
+import * as ch08 from './ch08'
 
 const gui = new dat.GUI()
 
 //所有章节
 let chapters = {
-  ch02, ch03, ch04, ch05, ch07
+  ch02, ch03, ch04, ch05, ch07, ch08
 }
 
 //当前章节
@@ -22,9 +23,10 @@ let demoList = []
 
 /**
  * 显示哪个章节
- * @param {String} index
+ * @param {String} chapter index of the chapter
+ * @returns {void}
  */
-function show(chapter = 'ch07') {
+function show(chapter = 'ch08') {
 
   if (current.chapter == chapter) {
     return
