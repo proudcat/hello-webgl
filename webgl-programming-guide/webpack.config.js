@@ -2,11 +2,11 @@ const path = require('path')
 const HtmlPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'none', 
+  mode: 'none',
   entry: ['./webgl-programming-guide/main.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'webgl-programming-guide.min.js',
+    filename: 'webgl-programming-guide.min.js'
   },
   target: 'web',
 
@@ -24,11 +24,11 @@ module.exports = {
     rules: [
       {
         test: /\.(txt|vs|fs|vert|frag)$/i,
-        use: 'raw-loader',
-      },
-    ],
+        use: 'raw-loader'
+      }
+    ]
   },
-  
+
   plugins: [
     new HtmlPlugin({
       file:path.join(__dirname,'dist','index.html'),
