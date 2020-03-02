@@ -15,7 +15,6 @@ module.exports = {
   },
   "rules": {
     "no-alert": 0,//禁止使用alert confirm prompt
-    "no-array-constructor": 2,//禁止使用数组构造器
     "no-bitwise": 0,//禁止使用按位运算符
     "no-caller": 1,//禁止使用arguments.caller或arguments.callee
     "no-catch-shadow": 2,//禁止catch子句参数与外部作用域变量同名
@@ -93,7 +92,7 @@ module.exports = {
     "no-sparse-arrays": 2,//禁止稀疏数组， [1,,2]
     "no-sync": 0,//nodejs 禁止同步方法
     "no-ternary": 0,//禁止使用三目运算符
-    "no-trailing-spaces": 1,//一行结束后面不要有空格
+    "no-trailing-spaces": 2,//一行结束后面不要有空格
     "no-this-before-super": 0,//在调用super()之前不能使用this或super
     "no-undef": 1,//不能有未定义的变量
     "no-undef-init": 2,//变量初始化时不能直接给它赋值为undefined
@@ -167,15 +166,15 @@ module.exports = {
     "sort-vars": 0,//变量声明时排序
     "space-after-keywords": [0, "always"],//关键字后面是否要空一格
     "space-before-blocks": [0, "always"],//不以新行开始的块{前面要不要有空格
-    "space-before-function-paren": [0, "always"],//函数定义时括号前面要不要有空格
-    "space-in-parens": [0, "never"],//小括号里面要不要有空格
+    "space-before-function-paren": [2, "never"],//函数定义时括号前面要不要有空格
+    "space-in-parens": [2, "never"],//小括号里面要不要有空格
     "space-infix-ops": 0,//中缀操作符周围要不要有空格
     "keyword-spacing": 2,//return throw case后面要不要加空格
     "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
     "spaced-comment": 0,//注释风格要不要有空格什么的
     "strict": 0,//使用严格模式
     "use-isnan": 2,//禁止比较时使用NaN，只能用isNaN()
-    "valid-jsdoc": 0,//jsdoc规则
+    "valid-jsdoc": 2,//jsdoc规则
     "valid-typeof": 2,//必须使用合法的typeof的值
     "vars-on-top": 2,//var必须放在作用域顶部
     "wrap-iife": [2, "inside"],//立即执行函数表达式的小括号风格

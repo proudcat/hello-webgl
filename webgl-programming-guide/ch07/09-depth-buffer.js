@@ -20,7 +20,7 @@ export class DepthBuffer extends Demo {
     this.viewMatrix.setLookAt(0, 0, 5, 0, 0, -100, 0, 1, 0)
     this.projMatrix.setPerspective(30, gl.drawingBufferWidth / gl.drawingBufferHeight, 1, 100)
 
-    this.u_MvpMatrix = gl.getUniformLocation( gl.program, 'u_MvpMatrix' )
+    this.u_MvpMatrix = gl.getUniformLocation(gl.program, 'u_MvpMatrix')
 
     gl.enable(gl.DEPTH_TEST)
 
