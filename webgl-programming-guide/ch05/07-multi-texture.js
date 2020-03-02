@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_av_texcoord.vs'
-import frag from '../shaders/u_sampler2_v_texcoord.fs'
+import vert from '../shaders/a_pos_av_texcoord.vert'
+import frag from '../shaders/u_sampler2_v_texcoord.frag'
 
 export class MultiTexture extends Demo {
 

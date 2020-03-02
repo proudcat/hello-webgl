@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos.vs'
-import frag from '../shaders/red.fs'
+import vert from '../shaders/a_pos.vert'
+import frag from '../shaders/red.frag'
 
 export class HelloTriangle extends Demo{
 

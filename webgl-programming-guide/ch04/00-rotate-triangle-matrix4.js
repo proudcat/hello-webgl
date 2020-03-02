@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_u_matrix.vs'
-import frag from '../shaders/red.fs'
+import vert from '../shaders/a_pos_u_matrix.vert'
+import frag from '../shaders/red.frag'
 import Matrix4 from '../common/matrix4.js'
 
 export class RotateTriangleMatrix4 extends Demo{

@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos.vs'
-import frag from '../shaders/u_width_u_height.fs'
+import vert from '../shaders/a_pos.vert'
+import frag from '../shaders/u_width_u_height.frag'
 
 export class HelloTriangleFragCoord extends Demo{
 

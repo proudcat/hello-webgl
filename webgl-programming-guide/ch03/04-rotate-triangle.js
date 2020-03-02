@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_u_rotate.vs'
-import frag from '../shaders/red.fs'
+import vert from '../shaders/a_pos_u_rotate.vert'
+import frag from '../shaders/red.frag'
 
 export class RotateTriangle extends Demo{
 

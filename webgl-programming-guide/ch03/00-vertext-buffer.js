@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_size.vs'
-import frag from '../shaders/red.fs'
+import vert from '../shaders/a_pos_size.vert'
+import frag from '../shaders/red.frag'
 
 export class VertextBuffer extends Demo{
 

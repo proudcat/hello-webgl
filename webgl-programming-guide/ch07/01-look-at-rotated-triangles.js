@@ -1,7 +1,7 @@
 import Demo from '../common/demo'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/a_pos_av_color_u_view_u_model.vs'
-import frag from '../shaders/v_color.fs'
+import vert from '../shaders/a_pos_av_color_u_view_u_model.vert'
+import frag from '../shaders/v_color.frag'
 
 export class LookAtRotatedTriangle extends Demo {
 

@@ -1,7 +1,7 @@
 import Demo from '../common/demo'
 import Matrix4 from '../common/matrix4.js'
-import frag from '../shaders/red.fs'
-import vert from '../shaders/a_pos_u_model.vs'
+import frag from '../shaders/red.frag'
+import vert from '../shaders/a_pos_u_model.vert'
 
 export class RotateMatrix extends Demo{
 

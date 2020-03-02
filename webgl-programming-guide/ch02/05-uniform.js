@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_size.vs'
-import frag from '../shaders/u_color.fs'
+import vert from '../shaders/a_pos_size.vert'
+import frag from '../shaders/u_color.frag'
 
 export class Uniform extends Demo{
 

@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_size_v_color.vs'
-import frag from '../shaders/v_color.fs'
+import vert from '../shaders/a_pos_size_v_color.vert'
+import frag from '../shaders/v_color.frag'
 
 export class InterleavingPosColor extends Demo{
 

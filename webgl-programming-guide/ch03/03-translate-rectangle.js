@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import vert from '../shaders/a_pos_u_trans.vs'
-import frag from '../shaders/red.fs'
+import vert from '../shaders/a_pos_u_trans.vert'
+import frag from '../shaders/red.frag'
 
 export class TranslationRectangle extends Demo{
 

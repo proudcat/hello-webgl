@@ -1,7 +1,7 @@
 import Demo from '../common/demo'
-import frag from '../shaders/v_color.fs'
+import frag from '../shaders/v_color.frag'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/a_pos_av_color_u_proj.vs'
+import vert from '../shaders/a_pos_av_color_u_proj.vert'
 
 export class OthoView extends Demo {
 

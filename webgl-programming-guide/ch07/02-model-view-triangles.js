@@ -1,7 +1,7 @@
 import Demo from '../common/demo'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/a_pos_av_color_u_modelview.vs'
-import frag from '../shaders/v_color.fs'
+import vert from '../shaders/a_pos_av_color_u_modelview.vert'
+import frag from '../shaders/v_color.frag'
 
 export class ModelViewTriangle extends Demo {
 
