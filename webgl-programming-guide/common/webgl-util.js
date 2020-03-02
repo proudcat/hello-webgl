@@ -1,27 +1,28 @@
 
 /**
  * 加载shader
- * @param {*} gl
- * @param {*} type
- * @param {*} source
+ * @param {WebGLRenderingContext} gl webgl render context
+ * @param {gl.VERTEX_SHADER|gl.VERTEX_SHADER} type vertext or fragment shader
+ * @param {String} source source text of the shader
+ * @returns {WebGLShader} compiled shader
  */
-function loadShader ( gl, type, source ) {
+function loadShader(gl, type, source) {
 
-  let shader = gl.createShader( type )
-  if ( shader === null ) {
-    console.log( 'unable to create shader' )
+  let shader = gl.createShader(type)
+  if (shader === null) {
+    console.log('unable to create shader')
     return null
   }
 
-  gl.shaderSource( shader, source )
+  gl.shaderSource(shader, source)
 
-  gl.compileShader( shader )
+  gl.compileShader(shader)
 
-  let compiled = gl.getShaderParameter( shader, gl.COMPILE_STATUS )
-  if ( !compiled ) {
-    let error = gl.getShaderInfoLog( shader )
-    console.log( 'Failed to compile shader: ' + error )
-    gl.deleteShader( shader )
+  let compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS)
+  if (!compiled) {
+    let error = gl.getShaderInfoLog(shader)
+    console.log('Failed to compile shader: ' + error)
+    gl.deleteShader(shader)
     return null
   }
 
@@ -29,10 +30,11 @@ function loadShader ( gl, type, source ) {
 }
 
 /**
- * 创建gl.program
- * @param {*} gl
- * @param {*} vshader
- * @param {*} fshader
+ * 创建 WebGLProgram
+ * @param {WebGLRenderingContext} gl webgl render context
+ * @param {String} vshader source text of the shader
+ * @param{String} fshader source text of the shader
+ * @returns {WebGLProgram} webgl program
  */
 function createProgram(gl, vshader, fshader) {
 
@@ -67,18 +69,19 @@ function createProgram(gl, vshader, fshader) {
 
 /**
  * 初始化shader
- * @param {}} gl canvas.getContext('webgl')
- * @param {*} vshader source text of vertex shader
- * @param {*} fshader soruce text of fragment shader
+ * @param {WebGLRenderingContext} gl webgl render context
+ * @param {String} vshader source text of the shader
+ * @param{String} fshader source text of the shader
+ * @returns {Boolean} success or failed
  */
-export function initShader ( gl, vshader, fshader ) {
-  let program = createProgram( gl, vshader, fshader )
-  if ( !program ) {
-    console.log( 'Failed to create program' )
+export function initShader(gl, vshader, fshader) {
+  let program = createProgram(gl, vshader, fshader)
+  if (!program) {
+    console.log('Failed to create program')
     return false
   }
 
-  gl.useProgram( program )
+  gl.useProgram(program)
   gl.program = program
 
   return true

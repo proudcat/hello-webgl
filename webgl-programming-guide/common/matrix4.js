@@ -13,7 +13,7 @@ export default class Matrix4{
  * Constructor of Matrix4
  * If options is specified, new matrix is initialized by options.
  * Otherwise, new matrix is initialized by identity matrix.
- * @param options source matrix(option)
+ * @param {JsonObject} options source matrix(option)
  */
   constructor(options) {
     let i, s, d
@@ -31,9 +31,9 @@ export default class Matrix4{
 
   /**
    * Set the identity matrix.
-   * @return this
+   * @return {Matrix4} this
    */
-  setIdentity () {
+  setIdentity() {
     let e = this.elements
     e[0] = 1;   e[4] = 0;   e[8]  = 0;   e[12] = 0
     e[1] = 0;   e[5] = 1;   e[9]  = 0;   e[13] = 0
@@ -44,10 +44,10 @@ export default class Matrix4{
 
   /**
    * Copy matrix.
-   * @param src source matrix
-   * @return this
+   * @param {Matrix4} src source matrix
+   * @return {Matrix4} this
    */
-  set (src) {
+  set(src) {
     let i, s, d
 
     s = src.elements
@@ -66,10 +66,10 @@ export default class Matrix4{
 
   /**
    * Multiply the matrix from the right.
-   * @param other The multiply matrix
-   * @return this
+   * @param {Matrix4} other The multiply matrix
+   * @return {Matrix4} this
    */
-  concat (other) {
+  concat(other) {
     let i, e, a, b, ai0, ai1, ai2, ai3
 
     // Calculate e = a * b
@@ -102,10 +102,10 @@ export default class Matrix4{
 
   /**
    * Multiply the three-dimensional vector.
-   * @param pos  The multiply vector
-   * @return The result of multiplication(Float32Array)
+   * @param {Matrix4} pos  The multiply vector
+   * @return {Vector3} The result of multiplication(Float32Array)
    */
-  multiplyVector3 (pos) {
+  multiplyVector3(pos) {
     let e = this.elements
     let p = pos.elements
     let v = new Vector3()
@@ -120,10 +120,10 @@ export default class Matrix4{
 
   /**
    * Multiply the four-dimensional vector.
-   * @param pos  The multiply vector
-   * @return The result of multiplication(Float32Array)
+   * @param {Matrix4} pos  The multiply vector
+   * @return {Vector4} The result of multiplication(Float32Array)
    */
-  multiplyVector4 (pos) {
+  multiplyVector4(pos) {
     let e = this.elements
     let p = pos.elements
     let v = new Vector4()
@@ -139,9 +139,9 @@ export default class Matrix4{
 
   /**
    * Transpose the matrix.
-   * @return this
+   * @return {Matrix4} this
    */
-  transpose () {
+  transpose() {
     let e, t
 
     e = this.elements
@@ -158,10 +158,10 @@ export default class Matrix4{
 
   /**
    * Calculate the inverse matrix of specified matrix, and set to this.
-   * @param other The source matrix
-   * @return this
+   * @param {Matrix4} other The source matrix
+   * @return {Matrix4} this
    */
-  setInverseOf (other) {
+  setInverseOf(other) {
     let i, s, d, inv, det
 
     s = other.elements
@@ -219,23 +219,23 @@ export default class Matrix4{
 
   /**
    * Calculate the inverse matrix of this, and set to this.
-   * @return this
+   * @return {Matrix4} this
    */
-  invert () {
+  invert() {
     return this.setInverseOf(this)
   }
 
   /**
    * Set the orthographic projection matrix.
-   * @param left The coordinate of the left of clipping plane.
-   * @param right The coordinate of the right of clipping plane.
-   * @param bottom The coordinate of the bottom of clipping plane.
-   * @param top The coordinate of the top top clipping plane.
-   * @param near The distances to the nearer depth clipping plane. This value is minus if the plane is to be behind the viewer.
-   * @param far The distances to the farther depth clipping plane. This value is minus if the plane is to be behind the viewer.
-   * @return this
+   * @param {Number} left The coordinate of the left of clipping plane.
+   * @param {Number} right The coordinate of the right of clipping plane.
+   * @param {Number} bottom The coordinate of the bottom of clipping plane.
+   * @param {Number} top The coordinate of the top top clipping plane.
+   * @param {Number} near The distances to the nearer depth clipping plane. This value is minus if the plane is to be behind the viewer.
+   * @param {Number} far The distances to the farther depth clipping plane. This value is minus if the plane is to be behind the viewer.
+   * @return {Matrix4} this
    */
-  setOrtho (left, right, bottom, top, near, far) {
+  setOrtho(left, right, bottom, top, near, far) {
     let e, rw, rh, rd
 
     if (left === right || bottom === top || near === far) {
@@ -273,29 +273,29 @@ export default class Matrix4{
 
   /**
    * Multiply the orthographic projection matrix from the right.
-   * @param left The coordinate of the left of clipping plane.
-   * @param right The coordinate of the right of clipping plane.
-   * @param bottom The coordinate of the bottom of clipping plane.
-   * @param top The coordinate of the top top clipping plane.
-   * @param near The distances to the nearer depth clipping plane. This value is minus if the plane is to be behind the viewer.
-   * @param far The distances to the farther depth clipping plane. This value is minus if the plane is to be behind the viewer.
-   * @return this
+   * @param {Number} left The coordinate of the left of clipping plane.
+   * @param {Number} right The coordinate of the right of clipping plane.
+   * @param {Number} bottom The coordinate of the bottom of clipping plane.
+   * @param {Number} top The coordinate of the top top clipping plane.
+   * @param {Number} near The distances to the nearer depth clipping plane. This value is minus if the plane is to be behind the viewer.
+   * @param {Number} far The distances to the farther depth clipping plane. This value is minus if the plane is to be behind the viewer.
+   * @return {Matrix4} this
    */
-  ortho (left, right, bottom, top, near, far) {
+  ortho(left, right, bottom, top, near, far) {
     return this.concat(new Matrix4().setOrtho(left, right, bottom, top, near, far))
   }
 
   /**
    * Set the perspective projection matrix.
-   * @param left The coordinate of the left of clipping plane.
-   * @param right The coordinate of the right of clipping plane.
-   * @param bottom The coordinate of the bottom of clipping plane.
-   * @param top The coordinate of the top top clipping plane.
-   * @param near The distances to the nearer depth clipping plane. This value must be plus value.
-   * @param far The distances to the farther depth clipping plane. This value must be plus value.
-   * @return this
+   * @param {Number} left The coordinate of the left of clipping plane.
+   * @param {Number} right The coordinate of the right of clipping plane.
+   * @param {Number} bottom The coordinate of the bottom of clipping plane.
+   * @param {Number} top The coordinate of the top top clipping plane.
+   * @param {Number} near The distances to the nearer depth clipping plane. This value must be plus value.
+   * @param {Number} far The distances to the farther depth clipping plane. This value must be plus value.
+   * @return {Matrix4} this
    */
-  setFrustum (left, right, bottom, top, near, far) {
+  setFrustum(left, right, bottom, top, near, far) {
     let e, rw, rh, rd
 
     if (left === right || top === bottom || near === far) {
@@ -339,27 +339,27 @@ export default class Matrix4{
 
   /**
    * Multiply the perspective projection matrix from the right.
-   * @param left The coordinate of the left of clipping plane.
-   * @param right The coordinate of the right of clipping plane.
-   * @param bottom The coordinate of the bottom of clipping plane.
-   * @param top The coordinate of the top top clipping plane.
-   * @param near The distances to the nearer depth clipping plane. This value must be plus value.
-   * @param far The distances to the farther depth clipping plane. This value must be plus value.
-   * @return this
+   * @param {Number} left The coordinate of the left of clipping plane.
+   * @param {Number} right The coordinate of the right of clipping plane.
+   * @param {Number} bottom The coordinate of the bottom of clipping plane.
+   * @param {Number} top The coordinate of the top top clipping plane.
+   * @param {Number} near The distances to the nearer depth clipping plane. This value must be plus value.
+   * @param {Number} far The distances to the farther depth clipping plane. This value must be plus value.
+   * @return {Matrix4} this
    */
-  frustum (left, right, bottom, top, near, far) {
+  frustum(left, right, bottom, top, near, far) {
     return this.concat(new Matrix4().setFrustum(left, right, bottom, top, near, far))
   }
 
   /**
    * Set the perspective projection matrix by fovy and aspect.
-   * @param fovy The angle between the upper and lower sides of the frustum.
-   * @param aspect The aspect ratio of the frustum. (width/height)
-   * @param near The distances to the nearer depth clipping plane. This value must be plus value.
-   * @param far The distances to the farther depth clipping plane. This value must be plus value.
-   * @return this
+   * @param {Number} fovy The angle between the upper and lower sides of the frustum.
+   * @param {Number} aspect The aspect ratio of the frustum. (width/height)
+   * @param {Number} near The distances to the nearer depth clipping plane. This value must be plus value.
+   * @param {Number} far The distances to the farther depth clipping plane. This value must be plus value.
+   * @return {Matrix4} this
    */
-  setPerspective (fovy, aspect, near, far) {
+  setPerspective(fovy, aspect, near, far) {
     let e, rd, s, ct
 
     if (near === far || aspect === 0) {
@@ -408,24 +408,24 @@ export default class Matrix4{
 
   /**
    * Multiply the perspective projection matrix from the right.
-   * @param fovy The angle between the upper and lower sides of the frustum.
-   * @param aspect The aspect ratio of the frustum. (width/height)
-   * @param near The distances to the nearer depth clipping plane. This value must be plus value.
-   * @param far The distances to the farther depth clipping plane. This value must be plus value.
-   * @return this
+   * @param {Number} fovy The angle between the upper and lower sides of the frustum.
+   * @param {Number} aspect The aspect ratio of the frustum. (width/height)
+   * @param {Number} near The distances to the nearer depth clipping plane. This value must be plus value.
+   * @param {Number} far The distances to the farther depth clipping plane. This value must be plus value.
+   * @return {Matrix4} this
    */
-  perspective (fovy, aspect, near, far) {
+  perspective(fovy, aspect, near, far) {
     return this.concat(new Matrix4().setPerspective(fovy, aspect, near, far))
   }
 
   /**
    * Set the matrix for scaling.
-   * @param x The scale factor along the X axis
-   * @param y The scale factor along the Y axis
-   * @param z The scale factor along the Z axis
-   * @return this
+   * @param {Number} x The scale factor along the X axis
+   * @param {Number} y The scale factor along the Y axis
+   * @param {Number} z The scale factor along the Z axis
+   * @return {Matrix4} this
    */
-  setScale (x, y, z) {
+  setScale(x, y, z) {
     let e = this.elements
     e[0] = x;  e[4] = 0;  e[8]  = 0;  e[12] = 0
     e[1] = 0;  e[5] = y;  e[9]  = 0;  e[13] = 0
@@ -436,12 +436,12 @@ export default class Matrix4{
 
   /**
    * Multiply the matrix for scaling from the right.
-   * @param x The scale factor along the X axis
-   * @param y The scale factor along the Y axis
-   * @param z The scale factor along the Z axis
-   * @return this
+   * @param {Number} x The scale factor along the X axis
+   * @param {Number} y The scale factor along the Y axis
+   * @param {Number} z The scale factor along the Z axis
+   * @return {Matrix4} this
    */
-  scale (x, y, z) {
+  scale(x, y, z) {
     let e = this.elements
     e[0] *= x;  e[4] *= y;  e[8]  *= z
     e[1] *= x;  e[5] *= y;  e[9]  *= z
@@ -452,12 +452,12 @@ export default class Matrix4{
 
   /**
    * Set the matrix for translation.
-   * @param x The X value of a translation.
-   * @param y The Y value of a translation.
-   * @param z The Z value of a translation.
-   * @return this
+   * @param {Number} x The X value of a translation.
+   * @param {Number} y The Y value of a translation.
+   * @param {Number} z The Z value of a translation.
+   * @return {Matrix4} this
    */
-  setTranslate (x, y, z) {
+  setTranslate(x, y, z) {
     let e = this.elements
     e[0] = 1;  e[4] = 0;  e[8]  = 0;  e[12] = x
     e[1] = 0;  e[5] = 1;  e[9]  = 0;  e[13] = y
@@ -468,12 +468,12 @@ export default class Matrix4{
 
   /**
    * Multiply the matrix for translation from the right.
-   * @param x The X value of a translation.
-   * @param y The Y value of a translation.
-   * @param z The Z value of a translation.
-   * @return this
+   * @param {Number} x The X value of a translation.
+   * @param {Number} y The Y value of a translation.
+   * @param {Number} z The Z value of a translation.
+   * @return {Matrix4} this
    */
-  translate (x, y, z) {
+  translate(x, y, z) {
     let e = this.elements
     e[12] += e[0] * x + e[4] * y + e[8]  * z
     e[13] += e[1] * x + e[5] * y + e[9]  * z
@@ -485,13 +485,13 @@ export default class Matrix4{
   /**
    * Set the matrix for rotation.
    * The vector of rotation axis may not be normalized.
-   * @param angle The angle of rotation (degrees)
-   * @param x The X coordinate of vector of rotation axis.
-   * @param y The Y coordinate of vector of rotation axis.
-   * @param z The Z coordinate of vector of rotation axis.
-   * @return this
+   * @param {Number} angle The angle of rotation (degrees)
+   * @param {Number} x The X coordinate of vector of rotation axis.
+   * @param {Number} y The Y coordinate of vector of rotation axis.
+   * @param {Number} z The Z coordinate of vector of rotation axis.
+   * @return {Matrix4} this
    */
-  setRotate (angle, x, y, z) {
+  setRotate(angle, x, y, z) {
     let e, s, c, len, rlen, nc, xy, yz, zx, xs, ys, zs
 
     angle = Math.PI * angle / 180
@@ -571,24 +571,30 @@ export default class Matrix4{
   /**
    * Multiply the matrix for rotation from the right.
    * The vector of rotation axis may not be normalized.
-   * @param angle The angle of rotation (degrees)
-   * @param x The X coordinate of vector of rotation axis.
-   * @param y The Y coordinate of vector of rotation axis.
-   * @param z The Z coordinate of vector of rotation axis.
-   * @return this
+   * @param {Number} angle The angle of rotation (degrees)
+   * @param {Number} x The X coordinate of vector of rotation axis.
+   * @param {Number} y The Y coordinate of vector of rotation axis.
+   * @param {Number} z The Z coordinate of vector of rotation axis.
+   * @return {Matrix4} this
    */
-  rotate (angle, x, y, z) {
+  rotate(angle, x, y, z) {
     return this.concat(new Matrix4().setRotate(angle, x, y, z))
   }
 
   /**
    * Set the viewing matrix.
-   * @param eyeX, eyeY, eyeZ The position of the eye point.
-   * @param centerX, centerY, centerZ The position of the reference point.
-   * @param upX, upY, upZ The direction of the up vector.
-   * @return this
+   * @param {Number} eyeX The position of the eye point.
+   * @param {Number} eyeY The position of the eye point.
+   * @param {Number} eyeZ The position of the eye point.
+   * @param {Number} centerX  The position of the reference point.
+   * @param {Number} centerY  The position of the reference point.
+   * @param {Number} centerZ  The position of the reference point.
+   * @param {Number} upX The direction of the up vector.
+   * @param {Number} upY The direction of the up vector.
+   * @param {Number} upZ The direction of the up vector.
+   * @returns {Matrix4} this
    */
-  setLookAt (eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
+  setLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
     let e, fx, fy, fz, rlf, sx, sy, sz, rls, ux, uy, uz
 
     fx = centerX - eyeX
@@ -645,12 +651,18 @@ export default class Matrix4{
 
   /**
    * Multiply the viewing matrix from the right.
-   * @param eyeX, eyeY, eyeZ The position of the eye point.
-   * @param centerX, centerY, centerZ The position of the reference point.
-   * @param upX, upY, upZ The direction of the up vector.
-   * @return this
+   * @param {Number} eyeX The position of the eye point.
+   * @param {Number} eyeY The position of the eye point.
+   * @param {Number} eyeZ The position of the eye point.
+   * @param {Number} centerX  The position of the reference point.
+   * @param {Number} centerY  The position of the reference point.
+   * @param {Number} centerZ  The position of the reference point.
+   * @param {Number} upX The direction of the up vector.
+   * @param {Number} upY The direction of the up vector.
+   * @param {Number} upZ The direction of the up vector.
+   * @returns {Matrix4} this
    */
-  lookAt (eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
+  lookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
     return this.concat(new Matrix4().setLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ))
   }
 
@@ -658,9 +670,9 @@ export default class Matrix4{
    * Multiply the matrix for project vertex to plane from the right.
    * @param plane The array[A, B, C, D] of the equation of plane "Ax + By + Cz + D = 0".
    * @param light The array which stored coordinates of the light. if light[3]=0, treated as parallel light.
-   * @return this
+   * @return {Matrix4} this
    */
-  dropShadow (plane, light) {
+  dropShadow(plane, light) {
     let mat = new Matrix4()
     let e = mat.elements
 
@@ -694,9 +706,9 @@ export default class Matrix4{
    * @param normX, normY, normZ The normal vector of the plane.(Not necessary to be normalized.)
    * @param planeX, planeY, planeZ The coordinate of arbitrary points on a plane.
    * @param lightX, lightY, lightZ The vector of the direction of light.(Not necessary to be normalized.)
-   * @return this
+   * @return {Matrix4} this
    */
-  dropShadowDirectionally (normX, normY, normZ, planeX, planeY, planeZ, lightX, lightY, lightZ) {
+  dropShadowDirectionally(normX, normY, normZ, planeX, planeY, planeZ, lightX, lightY, lightZ) {
     let a = planeX * normX + planeY * normY + planeZ * normZ
     return this.dropShadow([normX, normY, normZ, -a], [lightX, lightY, lightZ, 0])
   }

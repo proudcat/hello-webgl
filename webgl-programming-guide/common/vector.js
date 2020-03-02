@@ -4,7 +4,7 @@ export class Vector3{
 /**
  * Constructor of Vector3
  * If options is specified, new vector is initialized by options.
- * @param options source vector(option)
+ * @param {Vector3} options source vector(option)
  */
   constructor(options) {
     let v = new Float32Array(3)
@@ -15,10 +15,10 @@ export class Vector3{
   }
 
   /**
-  * Normalize.
-  * @return this
-  */
-  normalize () {
+   * Normalize.
+   * @return {Vector3} this
+   */
+  normalize() {
     let v = this.elements
     let c = v[0], d = v[1], e = v[2], g = Math.sqrt(c*c+d*d+e*e)
     if (g){
@@ -38,7 +38,7 @@ export class Vector3{
 /**
  * Constructor of Vector4
  * If options is specified, new vector is initialized by options.
- * @param options source vector(option)
+ * @param {Vector4} options source vector(option)
  */
 export class Vector4{
   constructor(options) {

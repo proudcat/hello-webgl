@@ -70,8 +70,9 @@ export default class Demo{
 
   /**
    * 调整canvas大小
-   * @param {*} width
-   * @param {*} height
+   * @param {Number} width width of the canvas
+   * @param {Number} height height of the canvas
+   * @return {void}
    */
   resize(width,height){
     this.$canvas.style.width=`${width}px`
@@ -85,6 +86,7 @@ export default class Demo{
 
   /**
    * 调用WebGL渲染
+   * @return {void}
    */
   render(){
     throw '没有实现render方法'
@@ -92,6 +94,7 @@ export default class Demo{
 
   /**
    * 销毁资源
+   * @return {void}
    */
   destroy(){
     if (this.ctx instanceof WebGLRenderingContext){
