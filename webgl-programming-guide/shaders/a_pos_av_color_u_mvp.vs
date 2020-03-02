@@ -1,5 +1,3 @@
-//00-look-at-striangles.js
-
 attribute vec4 a_Position;
 attribute vec4 a_Color;
 
