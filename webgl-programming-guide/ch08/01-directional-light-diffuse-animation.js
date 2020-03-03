@@ -4,7 +4,7 @@ import Matrix4 from '../common/matrix4.js'
 import vert from '../shaders/directional-light-diffuse-normal.vert'
 import { Vector3 } from '../common/vector'
 
-export class DirectionalLightDiffuseAnimation extends Demo {
+export class DirectionalLightDiffuseAnim extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })

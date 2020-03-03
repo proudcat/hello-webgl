@@ -3,7 +3,7 @@ import frag from '../shaders/v_color.frag'
 import Matrix4 from '../common/matrix4.js'
 import vert from '../shaders/point-light-diffuse-ambient-normal.vert'
 
-export class PointLightDiffuseAmbientAnimation extends Demo {
+export class PointLightDiffuseAmbientAnim extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })
