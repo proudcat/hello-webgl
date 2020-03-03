@@ -1,9 +1,9 @@
 import Demo from '../common/demo'
-import frag from '../shaders/v_color.frag'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/point-light-diffuse-ambient-normal.vert'
+import frag from '../shaders/spot-light-diffuse-ambient.frag'
+import vert from '../shaders/av_pos_av_normal_av_color_u_matrix.vert'
 
-export class PointLightDiffuseAmbient extends Demo {
+export class PointLightDiffuseAmbientFrag extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })

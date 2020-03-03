@@ -1,6 +1,6 @@
 import Demo from '../common/demo'
-import frag from '../shaders/v_color.frag'
 import Matrix4 from '../common/matrix4.js'
+import frag from '../shaders/v_color.frag'
 import vert from '../shaders/point-light-diffuse-ambient-normal.vert'
 
 export class PointLightDiffuseAmbientAnim extends Demo {
