@@ -93,13 +93,16 @@ export class DirectionalLightDiffuse extends Demo {
     //顶点个数
     this.count = indices.length
 
-    let indexBuffer = gl.createBuffer()
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW)
-
     this.initArrayBuffer('a_Position', vertices, 3)
     this.initArrayBuffer('a_Color', colors, 3)
     this.initArrayBuffer('a_Normal', normals, 3)
+
+    // Unbind the buffer object
+    gl.bindBuffer(gl.ARRAY_BUFFER, null)
+
+    let indexBuffer = gl.createBuffer()
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW)
 
   }
 
