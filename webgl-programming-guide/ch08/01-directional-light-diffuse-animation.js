@@ -39,7 +39,7 @@ export class DirectionalLightDiffuseAnim extends Demo {
     this.normalMatrix = new Matrix4()
 
     this.dir = 1
-    document.addEventListener('keydown', ev => this.keydown(ev))
+    // document.addEventListener('keydown', ev => this.keydown(ev))
 
     this.update()
   }
@@ -76,7 +76,7 @@ export class DirectionalLightDiffuseAnim extends Demo {
     let gl = this.ctx
     let now = Date.now()
     let elapsed = now - this.lastNow
-    elapsed = 17 * this.dir
+    // elapsed = 17 * this.dir
     this.lastNow = now
     this.angle = this.angle + 30.0 * elapsed / 1000.0
     this.angle %= 360
@@ -91,7 +91,7 @@ export class DirectionalLightDiffuseAnim extends Demo {
 
     this.render()
 
-    // requestAnimationFrame(() =>this.update())
+    requestAnimationFrame(() =>this.update())
   }
 
   initVertexBuffer() {

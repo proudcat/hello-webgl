@@ -37,7 +37,7 @@ export class DirectionalLightFragAnim extends Demo {
     this.modelMatrix = new Matrix4()
     this.mvpMatrix = new Matrix4()
     this.normalMatrix = new Matrix4()
-    document.addEventListener('keydown', ev => this.keydown(ev))
+    // document.addEventListener('keydown', ev => this.keydown(ev))
 
     this.dir = 1
     this.update()
@@ -73,7 +73,7 @@ export class DirectionalLightFragAnim extends Demo {
     let gl = this.ctx
     let now = Date.now()
     let elapsed = now - this.lastNow
-    elapsed = 17*this.dir
+    // elapsed = 17*this.dir
     this.lastNow = now
     this.angle = this.angle + 30.0 * elapsed / 1000.0
     this.angle %= 360
@@ -88,7 +88,7 @@ export class DirectionalLightFragAnim extends Demo {
 
     this.render()
 
-    // requestAnimationFrame(() =>this.update())
+    requestAnimationFrame(() =>this.update())
   }
 
   initVertexBuffer() {
