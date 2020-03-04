@@ -1,10 +1,10 @@
 import Demo from '../common/demo'
-import frag from '../shaders/v_color.frag'
 import Matrix4 from '../common/matrix4.js'
-import vert from '../shaders/directional-light-diffuse-normal.vert'
 import { Vector3 } from '../common/vector'
+import vert from '../shaders/directional-light.vert'
+import frag from '../shaders/directional-light.frag'
 
-export class DirectionalLightDiffuseAnim extends Demo {
+export class DirectionalLightFragAnim extends Demo {
 
   constructor(name) {
     super(name, { vert, frag })
@@ -37,10 +37,9 @@ export class DirectionalLightDiffuseAnim extends Demo {
     this.modelMatrix = new Matrix4()
     this.mvpMatrix = new Matrix4()
     this.normalMatrix = new Matrix4()
-
-    this.dir = 1
     document.addEventListener('keydown', ev => this.keydown(ev))
 
+    this.dir = 1
     this.update()
   }
 
@@ -70,13 +69,11 @@ export class DirectionalLightDiffuseAnim extends Demo {
     this.update()
 
   }
-
-
   update() {
     let gl = this.ctx
     let now = Date.now()
     let elapsed = now - this.lastNow
-    elapsed = 17 * this.dir
+    elapsed = 17*this.dir
     this.lastNow = now
     this.angle = this.angle + 30.0 * elapsed / 1000.0
     this.angle %= 360
