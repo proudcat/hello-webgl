@@ -59,7 +59,7 @@ export class PointLightDiffuseAmbient extends Demo {
     //  | |v7---|-|v4
     //  |/      |/
     //  v2------v3
-    var vertices = new Float32Array([
+    let vertices = new Float32Array([
       2.0, 2.0, 2.0, -2.0, 2.0, 2.0, -2.0, -2.0, 2.0, 2.0, -2.0, 2.0, // v0-v1-v2-v3 front
       2.0, 2.0, 2.0, 2.0, -2.0, 2.0, 2.0, -2.0, -2.0, 2.0, 2.0, -2.0, // v0-v3-v4-v5 right
       2.0, 2.0, 2.0, 2.0, 2.0, -2.0, -2.0, 2.0, -2.0, -2.0, 2.0, 2.0, // v0-v5-v6-v1 up
@@ -69,7 +69,7 @@ export class PointLightDiffuseAmbient extends Demo {
     ])
 
     // Colors
-    var colors = new Float32Array([
+    let colors = new Float32Array([
       1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,     // v0-v1-v2-v3 front
       1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,     // v0-v3-v4-v5 right
       1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,     // v0-v5-v6-v1 up
@@ -78,7 +78,7 @@ export class PointLightDiffuseAmbient extends Demo {
       1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0      // v4-v7-v6-v5 back
     ])
 
-    var indices = new Uint8Array([
+    let indices = new Uint8Array([
       // Indices of the vertices
       0,  1,  2,  0,  2,  3,    // front
       4,  5,  6,  4,  6,  7,    // right
@@ -100,13 +100,15 @@ export class PointLightDiffuseAmbient extends Demo {
     //顶点个数
     this.count = indices.length
 
-    let indexBuffer = gl.createBuffer()
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW)
-
     this.initArrayBuffer('a_Position', vertices, 3)
     this.initArrayBuffer('a_Color', colors, 3)
     this.initArrayBuffer('a_Normal', normals, 3)
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, null)
+
+    let indexBuffer = gl.createBuffer()
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW)
 
   }
 
