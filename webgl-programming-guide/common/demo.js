@@ -37,8 +37,12 @@ export default class Demo{
       console.log('WebGL Error:',event.statusMessage)
     }, false)
 
+    this.$desc = document.createElement('p')
+    // this.$desc.innerText = this.name
+
     this.$root.appendChild($button)
     this.$root.appendChild($canvas)
+    this.$root.append(this.$desc)
     $container.appendChild(this.$root)
 
     this.$canvas = $canvas
@@ -52,6 +56,13 @@ export default class Demo{
         return
       }
     }
+  }
+
+  /**
+   * @param {string} text decription of the current demo
+   */
+  set desc(text) {
+    this.$desc.innerText = text
   }
 
   loadImage(url){
@@ -79,6 +90,8 @@ export default class Demo{
     this.$canvas.style.height=`${height}px`
     this.$canvas.width = width
     this.$canvas.height = height
+    this.$desc.style.width = `${ width }px`
+    this.$desc.width = width
     if (this.ctx instanceof WebGLRenderingContext){
       this.ctx.viewport(0,0,width,height)
     }
