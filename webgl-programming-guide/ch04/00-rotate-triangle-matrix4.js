@@ -6,7 +6,7 @@ import Matrix4 from '../common/matrix4.js'
 export class RotateTriangleMatrix4 extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 
@@ -24,7 +24,7 @@ export class RotateTriangleMatrix4 extends Demo{
     let u_TransMatrix = gl.getUniformLocation(gl.program, 'u_TransMatrix')
 
     //注意 WebGL没有实现矩阵转置，所以第二个参数必须是false。
-    gl.uniformMatrix4fv(u_TransMatrix,false, transMatrix.elements)
+    gl.uniformMatrix4fv(u_TransMatrix, false, transMatrix.elements)
 
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()

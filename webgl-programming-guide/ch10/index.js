@@ -1,1 +1,5 @@
 export * from './00-rotate-object'
+export * from './01-pick-object'
+export * from './02-pick-cube-face'
+export * from './03-fog'
+export * from './04-fog-w'

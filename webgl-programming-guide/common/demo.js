@@ -6,7 +6,7 @@ export default class Demo{
     this.name = name
     this.enabled = true
 
-    let $container = document.querySelector('#container')
+    this.$container = document.querySelector('#container')
 
     this.$root = document.createElement('div')
     this.$root.className = 'demo'
@@ -43,7 +43,7 @@ export default class Demo{
     this.$root.appendChild($button)
     this.$root.appendChild($canvas)
     this.$root.append(this.$desc)
-    $container.appendChild(this.$root)
+    this.$container.appendChild(this.$root)
 
     this.$canvas = $canvas
     this.ctx = this.$canvas.getContext(context)
@@ -113,8 +113,7 @@ export default class Demo{
     if (this.ctx instanceof WebGLRenderingContext){
       this.ctx.getExtension('WEBGL_lose_context').loseContext()
     }
-    let $container = document.querySelector('#container')
-    $container.removeChild(this.$root)
+    this.$container.removeChild(this.$root)
   }
 
 }

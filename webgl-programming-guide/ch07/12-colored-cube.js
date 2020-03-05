@@ -36,8 +36,8 @@ export class ColoredCube extends Demo {
     //  | |v7---|-|v4
     //  |/      |/
     //  v2------v3
-    var vertices = new Float32Array([   // Vertex coordinates
-      1.0,   1.0,  1.0, -1.0,  1.0,  1.0, -1.0, -1.0,  1.0,  1.0, -1.0 , 1.0,  // v0-v1-v2-v3 front
+    let vertices = new Float32Array([   // Vertex coordinates
+      1.0,   1.0,  1.0, -1.0,  1.0,  1.0, -1.0, -1.0,  1.0,  1.0, -1.0, 1.0,  // v0-v1-v2-v3 front
       1.0,   1.0,  1.0,  1.0, -1.0,  1.0,  1.0, -1.0, -1.0,  1.0,  1.0, -1.0,  // v0-v3-v4-v5 right
       1.0,   1.0,  1.0,  1.0,  1.0, -1.0, -1.0,  1.0, -1.0, -1.0,  1.0,  1.0,  // v0-v5-v6-v1 up
       -1.0,  1.0,  1.0, -1.0,  1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,  1.0,  // v1-v6-v7-v2 left
@@ -45,7 +45,7 @@ export class ColoredCube extends Demo {
       1.0,  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,  1.0, -1.0,  1.0,  1.0, -1.0   // v4-v7-v6-v5 back
     ])
 
-    var colors = new Float32Array([     // Colors
+    let colors = new Float32Array([     // Colors
       0.4, 0.4, 1.0, 0.4, 0.4, 1.0, 0.4, 0.4, 1.0, 0.4, 0.4, 1.0,  // v0-v1-v2-v3 front(blue)
       0.4, 1.0, 0.4, 0.4, 1.0, 0.4, 0.4, 1.0, 0.4, 0.4, 1.0, 0.4,  // v0-v3-v4-v5 right(green)
       1.0, 0.4, 0.4, 1.0, 0.4, 0.4, 1.0, 0.4, 0.4, 1.0, 0.4, 0.4,  // v0-v5-v6-v1 up(red)
@@ -54,7 +54,7 @@ export class ColoredCube extends Demo {
       0.4, 1.0, 1.0, 0.4, 1.0, 1.0, 0.4, 1.0, 1.0, 0.4, 1.0, 1.0   // v4-v7-v6-v5 back
     ])
 
-    var indices = new Uint8Array([
+    let indices = new Uint8Array([
       // Indices of the vertices
       0,  1,  2,  0,  2,  3,    // front
       4,  5,  6,  4,  6,  7,    // right
@@ -87,7 +87,7 @@ export class ColoredCube extends Demo {
 
   render() {
     let gl = this.ctx
-    gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT)
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
     gl.drawElements(gl.TRIANGLES, this.count, gl.UNSIGNED_BYTE, 0)
   }
 

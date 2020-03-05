@@ -28,7 +28,7 @@ export class OthoView extends Demo {
     //顶点个数
     this.count = 9
 
-    this.near =0.0
+    this.near = 0.0
     this.far = 0.5
 
     this.viewMatrix = new Matrix4()
@@ -51,7 +51,7 @@ export class OthoView extends Demo {
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
-    document.addEventListener('keydown',ev => this.keydown(ev))
+    document.addEventListener('keydown', ev => this.keydown(ev))
 
     this.render()
   }

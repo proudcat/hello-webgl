@@ -5,7 +5,7 @@ import frag from '../shaders/red.frag'
 export class MultiAttribute extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 
@@ -23,7 +23,7 @@ export class MultiAttribute extends Demo{
     gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0)
     gl.enableVertexAttribArray(a_Position)
 
-    let sizes = new Float32Array([10.0,20.0,30.0])
+    let sizes = new Float32Array([10.0, 20.0, 30.0])
     let sizeBuffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer)
     gl.bufferData(gl.ARRAY_BUFFER, sizes, gl.STATIC_DRAW)

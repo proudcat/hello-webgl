@@ -35,7 +35,7 @@ export class LookAtRotatedTriangle extends Demo {
     gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix.elements)
 
     let modelMatrix = new Matrix4()
-    modelMatrix.setRotate(-30,0,0,1)
+    modelMatrix.setRotate(-30, 0, 0, 1)
     let u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix')
     gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements)
 

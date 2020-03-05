@@ -5,7 +5,7 @@ import frag from '../shaders/u_width_u_height.frag'
 export class HelloTriangleFragCoord extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 

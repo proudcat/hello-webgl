@@ -37,7 +37,7 @@ export class ViewProjection extends Demo {
 
     let projMatrix = new Matrix4()
     let u_ProjMatrix = gl.getUniformLocation(gl.program, 'u_ProjMatrix')
-    projMatrix.setOrtho(-1.0,1.0,-1.0,1.0,0.0,2.0)
+    projMatrix.setOrtho(-1.0, 1.0, -1.0, 1.0, 0.0, 2.0)
     gl.uniformMatrix4fv(u_ProjMatrix, false, projMatrix.elements)
 
     let vertexBuffer = gl.createBuffer()

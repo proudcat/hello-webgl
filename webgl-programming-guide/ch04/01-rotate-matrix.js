@@ -6,7 +6,7 @@ import vert from '../shaders/a_pos_u_model.vert'
 export class RotateMatrix extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 
@@ -26,7 +26,7 @@ export class RotateMatrix extends Demo{
     let u_RotateMatrix = gl.getUniformLocation(gl.program, 'u_RotateMatrix')
 
     //注意 WebGL没有实现矩阵转置，所以第二个参数必须是false。
-    gl.uniformMatrix4fv(u_RotateMatrix,false, modelMatrix.elements)
+    gl.uniformMatrix4fv(u_RotateMatrix, false, modelMatrix.elements)
 
     // Create a buffer object
     let vertexBuffer = gl.createBuffer()

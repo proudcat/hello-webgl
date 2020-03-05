@@ -10,7 +10,7 @@ const ANGLE_STEP = 45.0
 export class RotateTriangleAnimation extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 
@@ -46,7 +46,7 @@ export class RotateTriangleAnimation extends Demo{
     // Update the current rotation angle (adjusted by the elapsed time)
     let newAngle = this.currentAngle + ANGLE_STEP * elapsed / 1000.0
 
-    this.currentAngle = newAngle %360
+    this.currentAngle = newAngle % 360
   }
 
   update(){

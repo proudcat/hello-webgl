@@ -37,7 +37,7 @@ export class HelloCube extends Demo {
     //  | |v7---|-|v4
     //  |/      |/
     //  v2------v3
-    var vertices = new Float32Array([
+    let vertices = new Float32Array([
       // Vertex coordinates and color
       1.0,   1.0,  1.0, 1.0, 1.0, 1.0,  // v0 White
       -1.0,  1.0,  1.0, 1.0, 0.0, 1.0,  // v1 Magenta
@@ -50,7 +50,7 @@ export class HelloCube extends Demo {
     ])
 
     // Indices of the vertices
-    var indices = new Uint8Array([
+    let indices = new Uint8Array([
       0, 1, 2, 0, 2, 3,    // front
       0, 3, 4, 0, 4, 5,    // right
       0, 5, 6, 0, 6, 1,    // up
@@ -86,7 +86,7 @@ export class HelloCube extends Demo {
 
   render() {
     let gl = this.ctx
-    gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT)
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
     gl.drawElements(gl.TRIANGLES, this.count, gl.UNSIGNED_BYTE, 0)
   }
 

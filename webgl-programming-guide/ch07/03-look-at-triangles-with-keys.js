@@ -52,7 +52,7 @@ export class LookAtTriangleWithKeys extends Demo {
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
-    document.addEventListener('keydown',ev => this.keydown(ev))
+    document.addEventListener('keydown', ev => this.keydown(ev))
 
     this.render()
   }

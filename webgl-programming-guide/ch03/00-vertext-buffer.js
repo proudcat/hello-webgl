@@ -5,7 +5,7 @@ import frag from '../shaders/red.frag'
 export class VertextBuffer extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 
