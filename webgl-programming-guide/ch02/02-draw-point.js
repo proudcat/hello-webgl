@@ -4,7 +4,7 @@ import frag from '../shaders/red.frag'
 
 export class DrawPoint extends Demo{
   constructor(name) {
-    super(name,{vert,frag})
+    super(name, {vert, frag})
     this.render()
   }
 

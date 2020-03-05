@@ -38,7 +38,7 @@ export class FogW extends Demo {
   constructor(name) {
     super(name, { vert, frag })
 
-    this.desc = '↑↓: 增加/减小 雾的距离'
+    this.desc = '↑↓: 增加/减小 雾的距离(gl_Position.w)'
 
     this.setup()
   }
