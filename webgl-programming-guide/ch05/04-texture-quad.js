@@ -5,7 +5,7 @@ import frag from '../shaders/u_sampler_v_texcoord.frag'
 export class TextureQuad extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
     // this.resize(800,800)
     this.setup()
   }

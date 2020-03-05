@@ -2,17 +2,17 @@
 import {initShader} from './webgl-util'
 
 export default class Demo{
-  constructor(name,shaders,context='webgl'){
+  constructor(name, shaders, context = 'webgl'){
     this.name = name
     this.enabled = true
 
     let $container = document.querySelector('#container')
 
     this.$root = document.createElement('div')
-    this.$root.className='demo'
+    this.$root.className = 'demo'
 
     let $button = document.createElement('button')
-    $button.textContent=name
+    $button.textContent = name
     $button.onclick = ()=>{
       this.enabled = !this.enabled
       console.log(`enabled:${ this.enabled }`)
@@ -32,9 +32,9 @@ export default class Demo{
 
     let $canvas = document.createElement('canvas')
     $canvas.id = name
-    $canvas.textContent='你的浏览器不支持 WebGL.'
+    $canvas.textContent = '你的浏览器不支持 WebGL.'
     $canvas.addEventListener('webglcontextcreationerror', event => {
-      console.log('WebGL Error:',event.statusMessage)
+      console.log('WebGL Error:', event.statusMessage)
     }, false)
 
     this.$desc = document.createElement('p')
@@ -48,10 +48,10 @@ export default class Demo{
     this.$canvas = $canvas
     this.ctx = this.$canvas.getContext(context)
 
-    this.resize($canvas.clientWidth,$canvas.clientHeight)
+    this.resize($canvas.clientWidth, $canvas.clientHeight)
 
     if (shaders){
-      if (!initShader(this.ctx,shaders.vert,shaders.frag)){
+      if (!initShader(this.ctx, shaders.vert, shaders.frag)){
         console.error('failed to initialize shaders')
         return
       }
@@ -66,12 +66,12 @@ export default class Demo{
   }
 
   loadImage(url){
-    let promise = new Promise((resovle,reject)=>{
+    let promise = new Promise((resovle, reject)=>{
       let image = new Image()
-      image.onload=()=>{
+      image.onload = ()=>{
         resovle(image)
       }
-      image.onerror=()=>{
+      image.onerror = ()=>{
         reject()
       }
       image.src = url
@@ -85,15 +85,15 @@ export default class Demo{
    * @param {Number} height height of the canvas
    * @return {void}
    */
-  resize(width,height){
-    this.$canvas.style.width=`${width}px`
-    this.$canvas.style.height=`${height}px`
+  resize(width, height){
+    this.$canvas.style.width = `${width}px`
+    this.$canvas.style.height = `${height}px`
     this.$canvas.width = width
     this.$canvas.height = height
     this.$desc.style.width = `${ width }px`
     this.$desc.width = width
     if (this.ctx instanceof WebGLRenderingContext){
-      this.ctx.viewport(0,0,width,height)
+      this.ctx.viewport(0, 0, width, height)
     }
   }
 

@@ -119,7 +119,7 @@ module.exports = {
     "callback-return": 1,//避免多次调用回调什么的
     "camelcase": 0,//强制驼峰法命名
     "comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
-    "comma-spacing": 0,//逗号前后的空格
+    "comma-spacing": 2,//逗号前后的空格
     "comma-style": [2, "last"],//逗号风格，换行时在行首还是行尾
     "complexity": [0, 11],//循环复杂度
     "computed-property-spacing": [0, "never"],//是否允许计算后的键名什么的
@@ -168,7 +168,7 @@ module.exports = {
     "space-before-blocks": [0, "always"],//不以新行开始的块{前面要不要有空格
     "space-before-function-paren": [2, "never"],//函数定义时括号前面要不要有空格
     "space-in-parens": [2, "never"],//小括号里面要不要有空格
-    "space-infix-ops": 0,//中缀操作符周围要不要有空格
+    "space-infix-ops": 2,//中缀操作符周围要不要有空格
     "keyword-spacing": 2,//return throw case后面要不要加空格
     "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
     "spaced-comment": 0,//注释风格要不要有空格什么的

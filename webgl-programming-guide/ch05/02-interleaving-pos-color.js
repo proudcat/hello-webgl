@@ -5,7 +5,7 @@ import frag from '../shaders/v_color.frag'
 export class InterleavingPosColor extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 
@@ -30,7 +30,7 @@ export class InterleavingPosColor extends Demo{
     gl.enableVertexAttribArray(a_Position)
 
     let a_Color = gl.getAttribLocation(gl.program, 'a_Color')
-    gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, FSIZE * 5, FSIZE*2)
+    gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, FSIZE * 5, FSIZE * 2)
     gl.enableVertexAttribArray(a_Color)
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0)

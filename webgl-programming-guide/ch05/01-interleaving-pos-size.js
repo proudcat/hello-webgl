@@ -5,7 +5,7 @@ import frag from '../shaders/red.frag'
 export class InterleavingPosSize extends Demo{
 
   constructor(name){
-    super(name,{vert,frag})
+    super(name, {vert, frag})
 
     let gl = this.ctx
 
@@ -30,7 +30,7 @@ export class InterleavingPosSize extends Demo{
     gl.enableVertexAttribArray(a_Position)
 
     let a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize')
-    gl.vertexAttribPointer(a_PointSize, 1, gl.FLOAT, false, FSIZE * 3, FSIZE*2)
+    gl.vertexAttribPointer(a_PointSize, 1, gl.FLOAT, false, FSIZE * 3, FSIZE * 2)
     gl.enableVertexAttribArray(a_PointSize)
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0)
