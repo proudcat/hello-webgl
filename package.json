@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "dat.gui": "^0.7.6",
+    "keycode-js": "^2.0.3",
     "spectorjs": "^0.9.15"
   }
 }

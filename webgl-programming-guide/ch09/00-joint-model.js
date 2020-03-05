@@ -2,6 +2,7 @@ import Demo from '../common/demo'
 import Matrix4 from '../common/matrix4.js'
 import frag from '../shaders/v_color.frag'
 import vert from '../shaders/joint.vert'
+import * as KeyCode from 'keycode-js'
 
 const ANGLE_STEP = 3.0    // The increments of rotation angle (degrees)
 const ARM1_LEN = 10
@@ -11,7 +12,7 @@ export class JointModel extends Demo{
   constructor(name) {
     super(name, { vert, frag })
 
-    this.desc = '↔️控制底下的机械臂, ↕️控制上面的机械臂'
+    this.desc = '←→: 控制底下的机械臂。 ↑↓: 控制上面的机械臂'
 
     let gl = this.ctx
 
@@ -46,20 +47,20 @@ export class JointModel extends Demo{
     }
 
     switch (ev.keyCode) {
-    case 38: // Up arrow key -> the positive rotation of joint1 around the z-axis
+    case KeyCode.KEY_UP: // Up arrow key -> the positive rotation of joint1 around the z-axis
       if (this.joint1Angle < 135.0) {
         this.joint1Angle += ANGLE_STEP
       }
       break
-    case 40: // Down arrow key -> the negative rotation of joint1 around the z-axis
+    case KeyCode.KEY_DOWN: // Down arrow key -> the negative rotation of joint1 around the z-axis
       if (this.joint1Angle > -135.0) {
         this.joint1Angle -= ANGLE_STEP
       }
       break
-    case 39: // Right arrow key -> the positive rotation of arm1 around the y-axis
+    case KeyCode.KEY_RIGHT: // Right arrow key -> the positive rotation of arm1 around the y-axis
       this.arm1Angle = (this.arm1Angle + ANGLE_STEP) % 360
       break
-    case 37: // Left arrow key -> the negative rotation of arm1 around the y-axis
+    case KeyCode.KEY_LEFT: // Left arrow key -> the negative rotation of arm1 around the y-axis
       this.arm1Angle = (this.arm1Angle - ANGLE_STEP) % 360
       break
     default: return // Skip drawing at no effective action
