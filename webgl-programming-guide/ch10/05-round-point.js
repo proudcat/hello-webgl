@@ -21,14 +21,14 @@ export class RoundPoint extends Demo{
 
   constructor(name){
     super(name, {vert, frag})
-
+    this.desc = '绘制圆形的点'
     let gl = this.ctx
 
     let vertices = new Float32Array([
       0.0, 0.5, -0.5, -0.5, 0.5, -0.5
     ])
 
-    //定点个数
+    // 定点个数
     this.count = 3
 
     // Create a buffer object

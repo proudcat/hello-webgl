@@ -171,7 +171,7 @@ module.exports = {
     "space-infix-ops": 2,//中缀操作符周围要不要有空格
     "keyword-spacing": 2,//return throw case后面要不要加空格
     "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
-    "spaced-comment": 0,//注释风格要不要有空格什么的
+    "spaced-comment": 2,//注释风格要不要有空格什么的
     "strict": 0,//使用严格模式
     "use-isnan": 2,//禁止比较时使用NaN，只能用isNaN()
     "valid-jsdoc": 2,//jsdoc规则

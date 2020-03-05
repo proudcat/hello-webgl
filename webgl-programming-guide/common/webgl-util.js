@@ -6,7 +6,7 @@
  * @param {String} source source text of the shader
  * @returns {WebGLShader} compiled shader
  */
-function loadShader(gl, type, source) {
+export function loadShader(gl, type, source) {
 
   let shader = gl.createShader(type)
   if (shader === null) {
@@ -36,7 +36,7 @@ function loadShader(gl, type, source) {
  * @param{String} fshader source text of the shader
  * @returns {WebGLProgram} webgl program
  */
-function createProgram(gl, vshader, fshader) {
+export function createProgram(gl, vshader, fshader) {
 
   let vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader)
   let fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fshader)
