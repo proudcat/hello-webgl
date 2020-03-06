@@ -6,8 +6,9 @@
 * 安装`chrome`浏览器
 * 运行`npm install`安装依赖
 
-### 【实验1】WebGL Programming Guide
-> [《WebGL编程指南》](https://book.douban.com/subject/25909351/) 源码练习, 还是按照原书章节目录组织的，用`es6`重写了代码，并将所有的例子集中在一起，能在页面手动切换章节，让学习更方便。将`shader`分离到单独文件，利用`webpack`的`loader`动态加载。
+### 【实验1】《WebGL编程指南》(WebGL Programming Guide)
+> [《WebGL编程指南》](https://book.douban.com/subject/25909351/) 源码练习
+> 还是按照原书章节目录组织的，用`es6`重写了代码，并将所有的例子集中在一起，能在页面手动切换章节，让学习更方便。将`shader`分离到单独文件，利用`webpack`的`loader`动态加载。
 * 运行`npm run guide`命令会自动打开浏览器，可看到当前章节所有的效果。
 * 代码位于`webgl-programming-guide`目录。
 * `common/demo.js`是所有例子的父类，里面负责创建`canvas`等一些公共的初始化功能。
